@@ -42,6 +42,13 @@ const Pricing = () => {
           <p className="pricing-subtitle">
             Aprovecha nuestros precios especiales de lanzamiento. Una vez terminada la preventa, el libro volverá a su precio original.
           </p>
+          
+          <div className="scarcity-container">
+            <p className="scarcity-text">🔥 <strong>Oferta de Lanzamiento:</strong> 87% de las copias en preventa vendidas</p>
+            <div className="scarcity-bar">
+              <div className="scarcity-progress" style={{ width: '87%' }}></div>
+            </div>
+          </div>
         </div>
 
         <div className="pricing-cards">
@@ -75,6 +82,7 @@ const Pricing = () => {
 
           {/* Plan Señuelo (Físico) */}
           <div className="pricing-card standard">
+            <div className="last-units-badge">¡SOLO QUEDAN 14 COPIAS!</div>
             <h3 className="plan-name">Solo Físico</h3>
             <p className="plan-desc">Para los puristas del papel que aman el olor a libro nuevo.</p>
             <div className="plan-price-container">
@@ -103,6 +111,7 @@ const Pricing = () => {
           {/* Plan VIP (Best Seller) */}
           <div className="pricing-card vip">
             <div className="popular-badge">LA EXPERIENCIA TOTAL</div>
+            <div className="last-units-badge vip-scarcity">¡QUEDAN 9 CUPOS DISPONIBLES!</div>
             <h3 className="plan-name text-gold">La Experiencia VIP</h3>
             <p className="plan-desc" style={{ color: 'var(--color-darker)' }}>
               Llévate todo. Lee en casa, escucha en el auto y ten tu copia digital.
