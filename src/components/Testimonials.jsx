@@ -33,7 +33,7 @@ const Testimonials = () => {
     },
     {
       type: 'image',
-      src: "/Testimonio 2.png",
+      src: "/Testimonio 2.jpg",
       alt: "Lector de Somos infieles 2"
     },
     {
@@ -50,6 +50,31 @@ const Testimonials = () => {
       type: 'text',
       initials: "S.T.",
       text: "Un viaje de autodescubrimiento crudo, doloroso pero tremendamente real. Se lo recomiendo a cualquier pareja que esté lista para ser verdaderamente honesta."
+    },
+    {
+      type: 'image',
+      src: "/Testimonio 4.jpg",
+      alt: "Lector de Somos infieles 4"
+    },
+    {
+      type: 'text',
+      initials: "A.P.",
+      text: "Increíble cómo este libro me dio las palabras para expresar lo que siempre sentí pero nunca me atreví a decir por miedo al juicio social."
+    },
+    {
+      type: 'image',
+      src: "/Testimonio 5.png",
+      alt: "Lector de Somos infieles 5"
+    },
+    {
+      type: 'text',
+      initials: "L.M.",
+      text: "Una lectura obligatoria. Te desarma por completo y te obliga a reconstruir tus conceptos de amor y fidelidad sobre bases mucho más sanas."
+    },
+    {
+      type: 'image',
+      src: "/Testimonio 6.jpg",
+      alt: "Lector de Somos infieles 6"
     }
   ];
 
