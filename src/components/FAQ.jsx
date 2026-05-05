@@ -17,24 +17,24 @@ const Minus = ({ size = 20 }) => (
 
 const faqs = [
   {
+    question: '¿Es seguro mi pago?',
+    answer: 'Totalmente. Utilizamos pasarelas de pago líderes (Mercado Pago / Stripe) con cifrado SSL de 256 bits. Tus datos financieros nunca son almacenados en nuestros servidores y la transacción está 100% protegida.'
+  },
+  {
+    question: '¿Cuánto tarda en llegar el libro físico?',
+    answer: 'Para envíos nacionales en Colombia, el tiempo estimado es de 3 a 5 días hábiles. Para envíos internacionales, el tiempo puede variar entre 8 y 15 días hábiles dependiendo de la ciudad de destino.'
+  },
+  {
+    question: '¿Puedo leer el digital en Kindle o en mi celular?',
+    answer: '¡Sí! Al comprar la versión digital, recibirás el libro en formatos PDF y EPUB, compatibles con Kindle, iBooks, Google Books y cualquier dispositivo móvil o tablet.'
+  },
+  {
     question: '¿El libro está disponible físico o digital?',
-    answer: 'Podrás encontrarlo en versión física, en versión digital y en versión Audio libro.'
+    answer: 'Podrás encontrarlo en versión física, en versión digital y en versión Audio libro. También puedes optar por "La Experiencia Total" que incluye todos los formatos.'
   },
   {
     question: '¿Por dónde puedo tener más información del libro?',
-    answer: 'Escribiendo al Whatsapp +57 316 428 7586 y al correo electrónico: info@felipebeltranh.com.'
-  },
-  {
-    question: '¿Puedo pedir varios libros?',
-    answer: 'Sí, todos los que quieras.'
-  },
-  {
-    question: '¿Tienen envíos internacionales?',
-    answer: 'Sí, realizamos envíos a nivel internacional. Los tiempos y costos de entrega pueden variar según tu país y ciudad de destino.'
-  },
-  {
-    question: '¿Es seguro hacer el pago en esta página?',
-    answer: 'Totalmente. Utilizamos pasarelas de pago certificadas con encriptación de seguridad para proteger todos tus datos personales y financieros en cada transacción.'
+    answer: 'Puedes escribirnos directamente al WhatsApp +57 316 428 7586 o al correo electrónico: info@felipebeltranh.com. Estamos atentos para resolver cualquier duda.'
   }
 ];
 
