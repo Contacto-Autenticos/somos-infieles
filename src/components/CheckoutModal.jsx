@@ -64,6 +64,7 @@ const CheckoutModal = ({ isOpen, onClose, packageType }) => {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
+            'apikey': import.meta.env.VITE_SUPABASE_ANON_KEY,
             'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`
           },
           body: JSON.stringify({
@@ -76,7 +77,16 @@ const CheckoutModal = ({ isOpen, onClose, packageType }) => {
         }
       );
 
-      const data = await response.json();
+      const contentType = response.headers.get("content-type");
+      let data;
+      
+      if (contentType && contentType.includes("application/json")) {
+        data = await response.json();
+      } else {
+        const textError = await response.text();
+        console.error('Respuesta no-JSON de la función:', textError);
+        throw new Error(`Error del servidor (${response.status}). Por favor contacta a soporte.`);
+      }
 
       if (!response.ok) {
         throw new Error(data.error || 'Error al crear la preferencia de pago');
