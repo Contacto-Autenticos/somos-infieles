@@ -45,8 +45,8 @@ function App() {
       <Transformation />
       <Author />
       <Testimonials />
-      <HowItWorks />
       <Pricing />
+      <HowItWorks />
       <Guarantee />
       <FAQ />
       <Footer />
