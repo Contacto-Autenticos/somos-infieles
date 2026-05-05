@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { X, Lock, ArrowRight, Loader } from 'lucide-react';
+import { X, Lock, ArrowRight, Loader, ShieldCheck } from 'lucide-react';
 import { supabase } from '../supabaseClient';
 import './CheckoutModal.css';
 
@@ -308,6 +308,18 @@ const CheckoutModal = ({ isOpen, onClose, packageType }) => {
               </>
             )}
           </button>
+
+          <div className="secure-checkout-footer">
+            <div className="secure-badge">
+              <ShieldCheck size={16} className="shield-icon" />
+              <span>Compra 100% segura</span>
+            </div>
+            <div className="payment-methods-logos">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Visa_Inc._logo.svg" alt="Visa" className="payment-logo" />
+              <img src="https://upload.wikimedia.org/wikipedia/commons/2/2a/Mastercard-logo.svg" alt="Mastercard" className="payment-logo" />
+              <img src="https://http2.mlstatic.com/frontend-assets/ml-web-navigation/ui-navigation/5.21.22/mercadopago/logo__large.png" alt="Mercado Pago" className="payment-logo mp-logo" />
+            </div>
+          </div>
         </form>
       </div>
     </div>

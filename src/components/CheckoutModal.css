@@ -240,3 +240,68 @@
   opacity: 0.6;
   cursor: not-allowed;
 }
+
+/* Secure Checkout Footer */
+.secure-checkout-footer {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.secure-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #22c55e; /* Green for success/secure */
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.secure-badge .shield-icon {
+  color: #22c55e;
+}
+
+.payment-methods-logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  opacity: 0.8;
+  filter: grayscale(0.2);
+  transition: all 0.3s;
+}
+
+.payment-methods-logos:hover {
+  opacity: 1;
+  filter: grayscale(0);
+}
+
+.payment-logo {
+  height: 20px;
+  width: auto;
+  object-fit: contain;
+}
+
+.mp-logo {
+  height: 24px; /* Mercado Pago logo is usually taller/more complex */
+}
+
+@media (max-width: 500px) {
+  .payment-methods-logos {
+    gap: 1rem;
+  }
+  
+  .payment-logo {
+    height: 16px;
+  }
+  
+  .mp-logo {
+    height: 20px;
+  }
+}
