@@ -22,7 +22,7 @@ const faqs = [
   },
   {
     question: '¿El envío del libro físico es discreto?',
-    answer: 'Totalmente. El paquete se envía en un sobre o caja de seguridad estándar sin logos llamativos ni el título del libro a la vista. El remitente figurará como "Logística FB" para garantizar total discreción.'
+    answer: 'Totalmente. El paquete se envía en un sobre estándar sin logos llamativos ni el título del libro a la vista. El remitente figurará como "Felipe Beltrán o Logística FB" para garantizar total discreción.'
   },
   {
     question: '¿Es seguro mi pago?',
