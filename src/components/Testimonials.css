@@ -62,14 +62,8 @@
   animation-play-state: paused;
 }
 
-@keyframes scrollMarquee {
-  0% { transform: translateX(0); }
-  /* Since we duplicated the items (4 items * 2 = 8 items), we scroll exactly half the track's width to loop seamlessly.
-     But calculating 50% of flex track can be tricky with gap. 
-     Instead of percentage, we rely on the 4 original items' width.
-     Width of one item + gap = 350px + 32px (2rem) = 382px.
-     Total shift for 4 items = 382px * 4 = 1528px. */
-  100% { transform: translateX(calc(-350px * 4 - 2rem * 4)); }
+  /* Total shift for 7 items = (width + gap) * 7 = (350px + 2rem) * 7 */
+  100% { transform: translateX(calc(-350px * 7 - 2rem * 7)); }
 }
 
 .testimonial-card {
@@ -87,6 +81,19 @@
 
 .testimonial-card:hover {
   transform: translateY(-5px);
+}
+
+.testimonial-card.card-image {
+  padding: 0;
+  overflow: hidden;
+  border: none;
+}
+
+.reader-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .testimonial-text {

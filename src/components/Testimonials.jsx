@@ -15,20 +15,39 @@ const Quote = () => (
 );
 
 const Testimonials = () => {
-  const testimonials = [
+  const items = [
     {
+      type: 'text',
       initials: "M.A.",
       text: "Este libro me quitó un peso inmenso de encima. Entendí que mis deseos no me hacen una mala persona y pude hablar de mis fantasías sin culpa."
     },
     {
+      type: 'image',
+      src: "/Testimonio 1.jpg",
+      alt: "Lector de Somos infieles 1"
+    },
+    {
+      type: 'text',
       initials: "C.R.",
       text: "Lloré leyendo el capítulo sobre el origen biológico del deseo. Finalmente alguien explica la infidelidad sin juzgar ni victimizar."
     },
     {
+      type: 'image',
+      src: "/Testimonio 2.png",
+      alt: "Lector de Somos infieles 2"
+    },
+    {
+      type: 'text',
       initials: "J.D.",
       text: "Ojalá hubiera leído esto antes de mi divorcio. Cambió por completo mi forma de ver el amor, el compromiso y lo que realmente significa la lealtad."
     },
     {
+      type: 'image',
+      src: "/Testimonio 3.png",
+      alt: "Lector de Somos infieles 3"
+    },
+    {
+      type: 'text',
       initials: "S.T.",
       text: "Un viaje de autodescubrimiento crudo, doloroso pero tremendamente real. Se lo recomiendo a cualquier pareja que esté lista para ser verdaderamente honesta."
     }
@@ -46,17 +65,23 @@ const Testimonials = () => {
 
         <div className="carousel-container">
           <div className="carousel-track">
-            {[...testimonials, ...testimonials].map((t, index) => (
-              <div key={index} className="testimonial-card">
-                <Quote />
-                <p className="testimonial-text">"{t.text}"</p>
-                
-                <div className="testimonial-footer">
-                  <div className="stars">
-                    <Star /><Star /><Star /><Star /><Star />
-                  </div>
-                  <span className="testimonial-author">- {t.initials}</span>
-                </div>
+            {[...items, ...items].map((item, index) => (
+              <div key={index} className={`testimonial-card ${item.type === 'image' ? 'card-image' : ''}`}>
+                {item.type === 'text' ? (
+                  <>
+                    <Quote />
+                    <p className="testimonial-text">"{item.text}"</p>
+                    
+                    <div className="testimonial-footer">
+                      <div className="stars">
+                        <Star /><Star /><Star /><Star /><Star />
+                      </div>
+                      <span className="testimonial-author">- {item.initials}</span>
+                    </div>
+                  </>
+                ) : (
+                  <img src={item.src} alt={item.alt} className="reader-photo" />
+                )}
               </div>
             ))}
           </div>
