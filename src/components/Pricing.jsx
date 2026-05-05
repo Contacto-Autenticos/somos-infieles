@@ -82,9 +82,9 @@ const Pricing = () => {
 
           {/* Plan Señuelo (Físico) */}
           <div className="pricing-card standard">
-            <div className="last-units-badge">¡SOLO QUEDAN 14 COPIAS!</div>
             <h3 className="plan-name">Solo Físico</h3>
             <p className="plan-desc">Para los puristas del papel que aman el olor a libro nuevo.</p>
+            <div className="last-units-badge">¡SOLO QUEDAN 14 COPIAS!</div>
             <div className="plan-price-container">
               <span className="original-price">$39 USD</span>
               <div className="plan-price">
@@ -111,11 +111,11 @@ const Pricing = () => {
           {/* Plan VIP (Best Seller) */}
           <div className="pricing-card vip">
             <div className="popular-badge">LA EXPERIENCIA TOTAL</div>
-            <div className="last-units-badge vip-scarcity">¡QUEDAN 9 CUPOS DISPONIBLES!</div>
             <h3 className="plan-name text-gold">La Experiencia VIP</h3>
             <p className="plan-desc" style={{ color: 'var(--color-darker)' }}>
               Llévate todo. Lee en casa, escucha en el auto y ten tu copia digital.
             </p>
+            <div className="last-units-badge">¡QUEDAN 9 CUPOS DISPONIBLES!</div>
             <div className="plan-price-container">
               <span className="original-price" style={{ color: 'rgba(0,0,0,0.4)' }}>$89 USD</span>
               <div className="plan-price">

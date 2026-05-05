@@ -254,21 +254,17 @@
 .last-units-badge {
   background-color: #e74c3c;
   color: white;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
   font-weight: 900;
-  padding: 4px 10px;
-  border-radius: 4px;
-  position: absolute;
-  top: 15px;
-  right: 15px;
+  padding: 6px 14px;
+  border-radius: 6px;
   letter-spacing: 0.5px;
   animation: pulse-red 2s infinite;
   z-index: 5;
   box-shadow: 0 4px 10px rgba(231, 76, 60, 0.3);
-}
-
-.vip-scarcity {
-  top: 40px; /* Offset to not overlap with popular-badge */
+  margin: 0 auto 1.5rem auto;
+  width: fit-content;
+  display: block;
 }
 
 @keyframes pulse-red {
