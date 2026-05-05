@@ -315,12 +315,9 @@ const CheckoutModal = ({ isOpen, onClose, packageType }) => {
               <span>Compra 100% segura</span>
             </div>
             <div className="payment-methods-logos">
-              {/* Visa Base64 */}
-              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MCAxNSI+PHBhdGggZmlsbD0iIzFhMTkxOSIgZD0iTTE4LjI2IDExLjU2bC40My0yLjY4aDMuNzhsLS40MyAyLjY4aC0zLjc4em0yMC4xNi04LjA4Yy0uOTggMC0xLjgyLjU2LTIuMjEgMS41MWwtNC4xNCA5LjgxaDMuMTdsLjY0LTEuNTRoMy44OGwuMzYgMS41NGgyLjhsLTIuNDMtOS44MWMtLjM1LTEuNDUtMS4yNy0xLjUxLTIuMDctMS41MXptLTEuODggNi4wMmwuOTMtMi40OWMuMTQtLjM5LjMtLjk2LjQxLTEuMzNoLjExYy4wNi4zOC4xOS45Ni4zNCAxLjM0bC45NSAyLjQ4aC0yLjgzem0tMjIuNjcgMi4wNmMuMTQgMS4yNCAxLjIxIDEuODkgMi43NCAxLjg5IDEuNjcgMCAyLjY5LS43OCAyLjc2LTIuMDRoMy4wNmMtLjIzIDIuNzctMi43MyAzLjg0LTUuODQgMy44NC00LjA2IDAtNS45OS0yLjE0LTUuOTktNC45NSAwLTMuMDEgMi40Mi01LjAxIDYuMDUtNS4wMSA0LjA1IDAgNS44NiAyLjE2IDUuODYgNC44OGgtOC45NWMwLTEuMzIgMS4yNC0xLjk0IDIuODktMS45NCAxLjUzIDAgMi41Ni43OSAyLjYzIDIuMDhoLTMuNDR6bS00LjM4IDB2Mi43N2gtMy4wNXYtMi43N2wtNC40Ni05LjhWMy40OGgzLjI4bDIuNzIgNi40NGMuMTUuNDUuMzIgMS4wOC4zNiAxLjQyaC4xMWMuMDQtLjM0LjE3LS45Ny4zNS0xLjQybDIuNzItNi40NGgzLjI4bC00LjQ2IDkuOHptMjguMjgtOS44aDMuMDl2OS44aC0zLjA5di05Ljh6Ii8+PC9zdmc+" alt="Visa" className="payment-logo" />
-              {/* Mastercard Base64 */}
-              <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MCAzMCI+PGNpcmNsZSBjeD0iMTUuOSIgY3k9IjE1IiByPSIxNSIgZmlsbD0iI0VCMDAxQiIgZmlsbC1vcGFjaXR5PSIuOCIvPjxjaXJjbGUgY3g9IjM0LjEiIGN5PSIxNSIgcj0iMTUiIGZpbGw9IiNGRjU0MDAiIGZpbGwtb3BhY2l0eT0iLjgiLz48cGF0aCBmaWxsPSIjRkZENTAwIiBkPSJNMjUgNi45Yy0zLjEgMi41LTUuMSA2LjQtNS4xIDEwLjZzMiAxIDUuMSAxMC42YzMuMS0yLjUgNS4xLTYuNCA1LjEtMTAuNnMtMi04LjEtNS4xLTEwLjZ6Ii8+PC9zdmc+" alt="Mastercard" className="payment-logo" />
-              {/* Mercado Pago Text Badge (To ensure it never fails) */}
-              <div className="mp-badge-text">Mercado Pago</div>
+              <img src="/Icono - Visa.png" alt="Visa" className="payment-logo" />
+              <img src="/Icono - Mastercard.png" alt="Mastercard" className="payment-logo" />
+              <img src="/Icono - Mercado pago.png" alt="Mercado Pago" className="payment-logo mp-logo-img" />
             </div>
           </div>
         </form>
