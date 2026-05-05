@@ -52,7 +52,10 @@ export const Transformation = () => (
 export const AboutBook = () => (
   <section className="section-padding" style={{ backgroundColor: 'var(--color-dark)' }}>
     <div className="container">
-      <h2 style={{ fontSize: '2.5rem', marginBottom: '3rem', textAlign: 'center' }}>¿Qué descubrirás en "Somos Infieles"?</h2>
+      <h2 style={{ fontSize: '2.2rem', marginBottom: '3rem', textAlign: 'center', lineHeight: '1.2' }}>
+        <span style={{ display: 'block' }}>¿Qué descubrirás</span>
+        <span style={{ display: 'block' }}>en "<span style={{ color: 'var(--color-gold)' }}>Somos</span> Infieles"?</span>
+      </h2>
       <ul style={{ maxWidth: '600px', margin: '0 auto', listStyle: 'none', padding: 0 }}>
         {["El origen biológico y psicológico del deseo.", "Por qué la monogamia es un acuerdo, no una condición natural.", "Cómo separar el amor del deseo sexual.", "Herramientas para hablar de fantasías con tu pareja sin destruir la relación."].map((item, i) => (
           <li key={i} style={{ marginBottom: '1.5rem', fontSize: '1.2rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
