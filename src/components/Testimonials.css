@@ -62,7 +62,8 @@
 .carousel-track:hover {
   animation-play-state: paused;
 }
-
+@keyframes scrollMarquee {
+  0% { transform: translateX(0); }
   /* Total shift for 7 items = (width + gap) * 7 = (350px + 2rem) * 7 */
   100% { transform: translateX(calc(-350px * 7 - 2rem * 7)); }
 }
