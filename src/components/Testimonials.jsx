@@ -29,7 +29,7 @@ const Testimonials = () => {
     {
       type: 'text',
       initials: "C.R.",
-      text: "Lloré leyendo el capítulo sobre el origen biológico del deseo. Finalmente alguien explica la infidelidad sin juzgar ni victimizar."
+      text: "Con palabras claras, un lenguaje sencillo y un mensaje directo, \"Somos infieles\" es muy ameno de leer, a menos que tu ego y creencias te pongan en conflicto"
     },
     {
       type: 'image',
