@@ -64,7 +64,7 @@ const AudioPlayerSection = () => {
         <div className="media-container">
           {/* Columna Izquierda: Imagen */}
           <div className="media-left">
-            <img src="/Lectura de Libro Somos infieles.png" alt="Lectura del libro" className="media-image" />
+            <img src="/Lectura de Libro Somos infieles - 3.png" alt="Lectura del libro" className="media-image" />
           </div>
           
           {/* Columna Derecha: Texto + Reproductor */}
