@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { X, Lock, ArrowRight } from 'lucide-react';
+import { X, Lock, ArrowRight, Loader } from 'lucide-react';
+import { supabase } from '../supabaseClient';
 import './CheckoutModal.css';
+
+// Package configuration: maps packageType to title and USD price
+const PACKAGE_CONFIG = {
+  digital: { title: 'Somos Infieles - Digital + Audio', priceUSD: 15 },
+  physical: { title: 'Somos Infieles - Solo Físico', priceUSD: 20 },
+  vip: { title: 'Somos Infieles - Experiencia VIP', priceUSD: 22 }
+};
 
 const CheckoutModal = ({ isOpen, onClose, packageType }) => {
   const [formData, setFormData] = useState({
@@ -9,16 +17,19 @@ const CheckoutModal = ({ isOpen, onClose, packageType }) => {
     phone: '',
     city: '',
     address: '',
-    housingType: 'casa', // 'casa' o 'unidad'
+    housingType: 'casa',
     unitName: '',
     floor: '',
     apartment: ''
   });
+  const [status, setStatus] = useState('idle'); // idle, processing, error
+  const [errorMsg, setErrorMsg] = useState('');
 
-  // Reset form when opening/closing or changing type
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden';
+      setStatus('idle');
+      setErrorMsg('');
     } else {
       document.body.style.overflow = 'unset';
     }
@@ -27,27 +38,101 @@ const CheckoutModal = ({ isOpen, onClose, packageType }) => {
   if (!isOpen) return null;
 
   const isPhysical = packageType === 'physical' || packageType === 'vip';
+  const pkg = PACKAGE_CONFIG[packageType] || PACKAGE_CONFIG.digital;
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
-    alert('Gracias por tu interés. En un entorno real, aquí se conectaría con la pasarela de pago.');
-    onClose();
+    setStatus('processing');
+    setErrorMsg('');
+
+    try {
+      // 1. Generate a unique reference for this order
+      const reference = `SI-${Date.now()}-${Math.random().toString(36).substr(2, 6)}`;
+
+      // 2. Determine the back URL (current origin)
+      const backUrl = window.location.origin;
+
+      // 3. Call the Edge Function to create the Mercado Pago preference
+      const response = await fetch(
+        `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/create-mp-preference-infieles`,
+        {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`
+          },
+          body: JSON.stringify({
+            title: pkg.title,
+            unit_price_usd: pkg.priceUSD,
+            user_email: formData.email,
+            reference: reference,
+            back_url: backUrl
+          })
+        }
+      );
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Error al crear la preferencia de pago');
+      }
+
+      // 4. Save buyer data to Supabase
+      const { error: dbError } = await supabase
+        .from('compradores_somos_infieles')
+        .insert([{
+          nombre: formData.fullName,
+          email: formData.email,
+          telefono: formData.phone,
+          ciudad: isPhysical ? formData.city : null,
+          direccion: isPhysical ? formData.address : null,
+          tipo_vivienda: isPhysical ? formData.housingType : null,
+          nombre_unidad: isPhysical && formData.housingType === 'unidad' ? formData.unitName : null,
+          piso: isPhysical && formData.housingType === 'unidad' ? formData.floor : null,
+          apartamento: isPhysical && formData.housingType === 'unidad' ? formData.apartment : null,
+          paquete: packageType,
+          precio_usd: pkg.priceUSD,
+          precio_cop: data.unit_price_cop,
+          estado_pago: 'pendiente',
+          mp_preference_id: data.id
+        }]);
+
+      if (dbError) {
+        console.error('Error guardando comprador:', dbError);
+        // Continue to payment even if DB save fails
+      }
+
+      // 5. Redirect to Mercado Pago checkout
+      window.location.href = data.init_point;
+
+    } catch (error) {
+      console.error('Error en el checkout:', error);
+      setStatus('error');
+      setErrorMsg(error.message || 'Hubo un error al procesar tu pedido. Intenta nuevamente.');
+    }
   };
 
   return (
     <div className="modal-overlay" onClick={onClose}>
       <div className="modal-content" onClick={e => e.stopPropagation()}>
-        <button className="modal-close" onClick={onClose}><X size={24} /></button>
+        <button className="modal-close" onClick={onClose} disabled={status === 'processing'}>
+          <X size={24} />
+        </button>
         
         <form onSubmit={handleSubmit} className="checkout-form">
           <h2 className="modal-title">Finalizar Pedido</h2>
-          <p className="modal-subtitle">Estás a un paso de obtener tu copia de <strong>"Somos Infieles"</strong></p>
+          <p className="modal-subtitle">
+            Estás a un paso de obtener tu copia de <strong>"Somos Infieles"</strong>
+            <br />
+            <span style={{ color: 'var(--color-gold)', fontWeight: 700 }}>
+              {pkg.title.replace('Somos Infieles - ', '')} — ${pkg.priceUSD} USD
+            </span>
+          </p>
 
           <div className="form-group">
             <label>NOMBRE Y APELLIDO</label>
@@ -58,6 +143,7 @@ const CheckoutModal = ({ isOpen, onClose, packageType }) => {
               required 
               value={formData.fullName}
               onChange={handleChange}
+              disabled={status === 'processing'}
             />
           </div>
 
@@ -71,6 +157,7 @@ const CheckoutModal = ({ isOpen, onClose, packageType }) => {
                 required 
                 value={formData.email}
                 onChange={handleChange}
+                disabled={status === 'processing'}
               />
             </div>
             <div className="form-group">
@@ -82,6 +169,7 @@ const CheckoutModal = ({ isOpen, onClose, packageType }) => {
                 required 
                 value={formData.phone}
                 onChange={handleChange}
+                disabled={status === 'processing'}
               />
             </div>
           </div>
@@ -98,6 +186,7 @@ const CheckoutModal = ({ isOpen, onClose, packageType }) => {
                     required 
                     value={formData.city}
                     onChange={handleChange}
+                    disabled={status === 'processing'}
                   />
                 </div>
                 <div className="form-group">
@@ -109,6 +198,7 @@ const CheckoutModal = ({ isOpen, onClose, packageType }) => {
                     required 
                     value={formData.address}
                     onChange={handleChange}
+                    disabled={status === 'processing'}
                   />
                 </div>
               </div>
@@ -123,6 +213,7 @@ const CheckoutModal = ({ isOpen, onClose, packageType }) => {
                       value="casa" 
                       checked={formData.housingType === 'casa'}
                       onChange={handleChange}
+                      disabled={status === 'processing'}
                     />
                     <span>Casa</span>
                   </label>
@@ -133,6 +224,7 @@ const CheckoutModal = ({ isOpen, onClose, packageType }) => {
                       value="unidad" 
                       checked={formData.housingType === 'unidad'}
                       onChange={handleChange}
+                      disabled={status === 'processing'}
                     />
                     <span>Unidad Residencial</span>
                   </label>
@@ -150,6 +242,7 @@ const CheckoutModal = ({ isOpen, onClose, packageType }) => {
                       required 
                       value={formData.unitName}
                       onChange={handleChange}
+                      disabled={status === 'processing'}
                     />
                   </div>
                   <div className="form-row">
@@ -162,6 +255,7 @@ const CheckoutModal = ({ isOpen, onClose, packageType }) => {
                         required 
                         value={formData.floor}
                         onChange={handleChange}
+                        disabled={status === 'processing'}
                       />
                     </div>
                     <div className="form-group">
@@ -173,6 +267,7 @@ const CheckoutModal = ({ isOpen, onClose, packageType }) => {
                         required 
                         value={formData.apartment}
                         onChange={handleChange}
+                        disabled={status === 'processing'}
                       />
                     </div>
                   </div>
@@ -186,8 +281,22 @@ const CheckoutModal = ({ isOpen, onClose, packageType }) => {
             <p>Tus datos están protegidos y no serán compartidos con terceros sin tu autorización.</p>
           </div>
 
-          <button type="submit" className="modal-submit-btn">
-            CONTINUAR <ArrowRight size={20} />
+          {status === 'error' && (
+            <div className="checkout-error">
+              <p>⚠️ {errorMsg}</p>
+            </div>
+          )}
+
+          <button type="submit" className="modal-submit-btn" disabled={status === 'processing'}>
+            {status === 'processing' ? (
+              <>
+                <Loader size={20} className="spinner" /> PROCESANDO...
+              </>
+            ) : (
+              <>
+                CONTINUAR AL PAGO <ArrowRight size={20} />
+              </>
+            )}
           </button>
         </form>
       </div>
