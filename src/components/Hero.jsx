@@ -12,8 +12,11 @@ const Hero = () => {
             <span style={{ display: 'block' }}>infidelidad que nadie</span>
             <span style={{ display: 'block' }}>se atreve a decirte.</span>
           </h1>
-          <p className="hero-description" style={{ marginBottom: '2rem' }}>
-            Desafía tus creencias, rompe el ciclo del dolor y descubre por qué la mentira es solo el síntoma de algo más profundo. Recupera tu poder personal y la claridad que necesitas hoy.
+          <p className="hero-description" style={{ marginBottom: '1rem' }}>
+            Desafía tus creencias, rompe el ciclo del dolor y descubre por qué la mentira es solo el síntoma de algo más profundo.
+          </p>
+          <p className="hero-description" style={{ marginBottom: '2.5rem' }}>
+            Recupera tu poder personal y la claridad que necesitas hoy.
           </p>
           
           <CTAButton text="QUIERO DESCUBRIR LA VERDAD" className="hero-cta" />
