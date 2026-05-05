@@ -283,13 +283,13 @@
 }
 
 .payment-logo {
-  height: 15px;
+  height: 24px;
   width: auto;
   object-fit: contain;
 }
 
 .mp-logo-img {
-  height: 20px; /* Mercado pago logo is a bit wider, so slightly more height looks better */
+  height: 32px; /* Increased for better visibility */
   width: auto;
 }
 
