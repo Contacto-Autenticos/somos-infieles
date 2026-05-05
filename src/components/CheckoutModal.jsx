@@ -315,9 +315,9 @@ const CheckoutModal = ({ isOpen, onClose, packageType }) => {
               <span>Compra 100% segura</span>
             </div>
             <div className="payment-methods-logos">
-              <img src="https://raw.githubusercontent.com/fede-87/payment-logos/master/visa.svg" alt="Visa" className="payment-logo" />
-              <img src="https://raw.githubusercontent.com/fede-87/payment-logos/master/mastercard.svg" alt="Mastercard" className="payment-logo" />
-              <img src="https://raw.githubusercontent.com/fede-87/payment-logos/master/mercado-pago.svg" alt="Mercado Pago" className="payment-logo mp-logo" />
+              <img src="https://cdn.jsdelivr.net/npm/payment-icons@1.5.0/min/flat/visa.svg" alt="Visa" className="payment-logo" />
+              <img src="https://cdn.jsdelivr.net/npm/payment-icons@1.5.0/min/flat/mastercard.svg" alt="Mastercard" className="payment-logo" />
+              <img src="https://logotyp.us/files/mercado-pago.svg" alt="Mercado Pago" className="payment-logo mp-logo" />
             </div>
           </div>
         </form>
