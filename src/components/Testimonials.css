@@ -1,6 +1,7 @@
 .testimonials-section {
-  background-color: var(--color-white);
+  background-color: #fcfcfc;
   overflow: hidden;
+  border-top: 1px solid #eee;
 }
 
 .testimonials-title {
@@ -68,15 +69,15 @@
 
 .testimonial-card {
   width: 350px;
-  height: 420px; /* Altura fija para que las fotos no colapsen */
+  height: 420px;
   flex-shrink: 0;
-  background-color: var(--color-gray);
+  background-color: #ffffff; /* Blanco puro para destacar del fondo grisáceo */
   border-radius: 12px;
   padding: 2.5rem 2rem;
   display: flex;
   flex-direction: column;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.1); /* Sombra más fuerte */
+  border: 1px solid #ddd; /* Borde más visible */
   transition: transform 0.3s ease;
 }
 
@@ -98,8 +99,8 @@
 }
 
 .testimonial-text {
-  color: var(--color-dark);
-  font-size: 1.1rem;
+  color: #000000; /* Negro puro para máximo contraste */
+  font-size: 1.15rem;
   line-height: 1.6;
   flex-grow: 1;
   margin-bottom: 2rem;
@@ -120,9 +121,9 @@
 }
 
 .testimonial-author {
-  font-weight: 700;
-  color: var(--color-darker);
-  font-size: 0.9rem;
+  font-weight: 800;
+  color: #000;
+  font-size: 1rem;
 }
 
 @media (max-width: 768px) {
