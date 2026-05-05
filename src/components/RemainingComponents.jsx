@@ -99,9 +99,7 @@ export const Author = () => (
             Su enfoque en temas relacionados con las ciencias sociales y el comportamiento humano, le han permitido comprender la mecánica del universo y la relación que los individuos tienen con él.
           </p>
 
-          <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--color-gray)', marginBottom: '2rem' }}>
-            Su propósito es contribuir en la transformación de la humanidad, con diálogos que permitan ampliar el nivel de consciencia de cada una de las personas con quienes trabaja.
-          </p>
+
 
           <blockquote style={{ borderLeft: '4px solid var(--color-gold)', paddingLeft: '1.5rem', fontStyle: 'italic', fontSize: '1.2rem', color: 'var(--color-white)', margin: 0 }}>
             «Sí esta obra salva una relación de pareja, un hogar, la vida de una persona o contribuye a que tengamos relaciones más sanas y honestas, habrá tenido sentido»
