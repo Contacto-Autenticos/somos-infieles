@@ -292,6 +292,17 @@
   height: 24px; /* Mercado Pago logo is usually taller/more complex */
 }
 
+.mp-badge-text {
+  background-color: #009ee3;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
 @media (max-width: 500px) {
   .payment-methods-logos {
     gap: 1rem;
