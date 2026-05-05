@@ -115,7 +115,7 @@ const Pricing = () => {
             <p className="plan-desc" style={{ color: 'var(--color-darker)' }}>
               Llévate todo. Lee en casa, escucha en el auto y ten tu copia digital.
             </p>
-            <div className="last-units-badge">¡QUEDAN 9 CUPOS DISPONIBLES!</div>
+            <div className="last-units-badge">¡SOLO QUEDAN 14 COPIAS!</div>
             <div className="plan-price-container">
               <span className="original-price" style={{ color: 'rgba(0,0,0,0.4)' }}>$89 USD</span>
               <div className="plan-price">
