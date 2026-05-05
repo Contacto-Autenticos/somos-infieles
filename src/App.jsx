@@ -9,6 +9,7 @@ import Pricing from './components/Pricing';
 import HowItWorks from './components/HowItWorks';
 import FAQ from './components/FAQ';
 import WhatsAppButton from './components/WhatsAppButton';
+import StickyMobileCTA from './components/StickyMobileCTA';
 import PaymentStatus from './components/PaymentStatus';
 
 function App() {
@@ -50,6 +51,7 @@ function App() {
       <Guarantee />
       <FAQ />
       <Footer />
+      <StickyMobileCTA />
       <WhatsAppButton />
     </div>
   );
