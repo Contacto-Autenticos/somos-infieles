@@ -1,0 +1,124 @@
+.testimonials-section {
+  background-color: var(--color-white);
+  overflow: hidden;
+}
+
+.testimonials-title {
+  text-align: center;
+  font-size: 2.5rem;
+  color: var(--color-dark);
+  margin-bottom: 0.5rem;
+}
+
+.testimonials-subtitle {
+  text-align: center;
+  color: var(--color-darker);
+  opacity: 0.7;
+  font-size: 1.1rem;
+  margin-bottom: 3rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.carousel-container {
+  width: 100%;
+  padding-bottom: 2rem;
+  overflow: hidden;
+  position: relative;
+}
+
+/* Optional gradient masks to fade the edges smoothly */
+.carousel-container::before,
+.carousel-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 100px;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.carousel-container::before {
+  left: 0;
+  background: linear-gradient(to right, var(--color-white) 0%, transparent 100%);
+}
+
+.carousel-container::after {
+  right: 0;
+  background: linear-gradient(to left, var(--color-white) 0%, transparent 100%);
+}
+
+.carousel-track {
+  display: flex;
+  gap: 2rem;
+  width: max-content;
+  animation: scrollMarquee 25s linear infinite;
+  padding: 1rem 0;
+}
+
+.carousel-track:hover {
+  animation-play-state: paused;
+}
+
+@keyframes scrollMarquee {
+  0% { transform: translateX(0); }
+  /* Since we duplicated the items (4 items * 2 = 8 items), we scroll exactly half the track's width to loop seamlessly.
+     But calculating 50% of flex track can be tricky with gap. 
+     Instead of percentage, we rely on the 4 original items' width.
+     Width of one item + gap = 350px + 32px (2rem) = 382px.
+     Total shift for 4 items = 382px * 4 = 1528px. */
+  100% { transform: translateX(calc(-350px * 4 - 2rem * 4)); }
+}
+
+.testimonial-card {
+  width: 350px;
+  flex-shrink: 0;
+  background-color: var(--color-gray);
+  border-radius: 12px;
+  padding: 2.5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+}
+
+.testimonial-text {
+  color: var(--color-dark);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  flex-grow: 1;
+  margin-bottom: 2rem;
+  font-style: italic;
+}
+
+.testimonial-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  padding-top: 1.5rem;
+}
+
+.stars {
+  display: flex;
+  gap: 0.2rem;
+}
+
+.testimonial-author {
+  font-weight: 700;
+  color: var(--color-darker);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 768px) {
+  .testimonial-card {
+    flex: 0 0 280px;
+  }
+}

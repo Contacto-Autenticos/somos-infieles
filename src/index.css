@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  --color-gold: #dcbe3c;
+  --color-gold-hover: #c7ab31;
+  --color-black: #000000;
+  --color-white: #ffffff;
+  --color-gray: #e8e8e8;
+  --color-dark: #121212;
+  --color-darker: #0a0a0a;
+  
+  --font-primary: 'Inter', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-dark);
+  color: var(--color-gray);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--color-white);
+  line-height: 1.2;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  font-family: var(--font-primary);
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* Utilities */
+.text-gold { color: var(--color-gold); }
+.text-white { color: var(--color-white); }
+.bg-dark { background-color: var(--color-dark); }
+.bg-darker { background-color: var(--color-darker); }
+.mt-8 { margin-top: 2rem; }
+.mt-12 { margin-top: 3rem; }
+.mt-16 { margin-top: 4rem; }
+
+/* Buttons */
+.btn-primary {
+  display: inline-block;
+  background-color: var(--color-gold);
+  color: var(--color-black);
+  font-weight: 700;
+  padding: 1rem 2.5rem;
+  border: none;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(220, 190, 60, 0.3);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-gold-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(220, 190, 60, 0.4);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.section-padding {
+  padding: 6rem 0;
+}
+
+@media (max-width: 768px) {
+  .section-padding {
+    padding: 4rem 0;
+  }
+}
+
+.autenticos-link {
+  transition: all 0.2s ease;
+}
+
+.autenticos-link:hover {
+  opacity: 0.8;
+  transform: translateY(-1px);
+}
+
+.autenticos-link svg {
+  transition: transform 0.2s ease;
+}
+
+.autenticos-link:hover svg {
+  transform: translate(2px, -2px);
+}

@@ -1,0 +1,77 @@
+.checkout-section {
+  background-color: var(--color-dark);
+}
+
+.checkout-card {
+  background-color: var(--color-dark);
+  border-radius: 12px;
+  padding: 4rem;
+  max-width: 600px;
+  margin: 0 auto;
+  border: 1px solid rgba(220, 190, 60, 0.2);
+  box-shadow: 0 0 40px rgba(220, 190, 60, 0.05);
+}
+
+.checkout-title {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.checkout-subtitle {
+  text-align: center;
+  color: var(--color-gray);
+  margin-bottom: 3rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: var(--color-gray);
+  font-size: 0.9rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 1rem;
+  background-color: var(--color-darker);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 4px;
+  color: var(--color-white);
+  font-family: var(--font-primary);
+  font-size: 1rem;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--color-gold);
+}
+
+.form-btn {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.success-message {
+  text-align: center;
+  padding: 3rem;
+  background-color: rgba(220, 190, 60, 0.1);
+  border-radius: 8px;
+  border: 1px solid var(--color-gold);
+}
+
+.success-message h3 {
+  color: var(--color-gold);
+  margin-bottom: 1rem;
+}
+
+.error-message {
+  color: #ff4b4b;
+  margin-bottom: 1rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
