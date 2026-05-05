@@ -6,6 +6,7 @@ import { Transformation, AboutBook, Author, Guarantee, Footer } from './componen
 import AudioPlayerSection from './components/AudioPlayerSection';
 import Testimonials from './components/Testimonials';
 import Pricing from './components/Pricing';
+import HowItWorks from './components/HowItWorks';
 import FAQ from './components/FAQ';
 import WhatsAppButton from './components/WhatsAppButton';
 import PaymentStatus from './components/PaymentStatus';
@@ -44,6 +45,7 @@ function App() {
       <Transformation />
       <Author />
       <Testimonials />
+      <HowItWorks />
       <Pricing />
       <Guarantee />
       <FAQ />
