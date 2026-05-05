@@ -44,7 +44,7 @@ const Pricing = () => {
           </p>
           
           <div className="scarcity-container">
-            <p className="scarcity-text">🔥 <strong>Oferta de Lanzamiento:</strong> 87% de las copias en preventa vendidas</p>
+            <p className="scarcity-text">🔥 87% de las copias en preventa vendidas</p>
             <div className="scarcity-bar">
               <div className="scarcity-progress" style={{ width: '87%' }}></div>
             </div>
