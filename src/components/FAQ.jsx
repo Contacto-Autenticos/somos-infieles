@@ -17,6 +17,14 @@ const Minus = ({ size = 20 }) => (
 
 const faqs = [
   {
+    question: '¿Aparecerá "Somos Infieles" en mi extracto bancario?',
+    answer: 'No. Para proteger tu privacidad, el cobro aparecerá a nombre de "Felipe Beltrán H." o "Mercado Pago". En ningún momento se mencionará el título del libro en tu registro bancario.'
+  },
+  {
+    question: '¿El envío del libro físico es discreto?',
+    answer: 'Totalmente. El paquete se envía en un sobre o caja de seguridad estándar sin logos llamativos ni el título del libro a la vista. El remitente figurará como "Logística FB" para garantizar total discreción.'
+  },
+  {
     question: '¿Es seguro mi pago?',
     answer: 'Totalmente. Utilizamos pasarelas de pago líderes (Mercado Pago / Stripe) con cifrado SSL de 256 bits. Tus datos financieros nunca son almacenados en nuestros servidores y la transacción está 100% protegida.'
   },
