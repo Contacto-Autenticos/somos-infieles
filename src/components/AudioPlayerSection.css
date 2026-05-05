@@ -1,5 +1,6 @@
 .media-section {
   background-color: var(--color-gray);
+  padding: 3rem 0;
 }
 
 .media-container {
@@ -28,14 +29,14 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
 }
 
 /* White Review Card */
 .review-card {
   background-color: var(--color-white);
   border-radius: 16px;
-  padding: 3rem;
+  padding: 2rem;
   box-shadow: 0 10px 30px rgba(0,0,0,0.05);
   display: flex;
   flex-direction: column;
@@ -58,10 +59,10 @@
 .review-text {
   color: var(--color-darker);
   font-size: 1.1rem;
-  line-height: 1.8;
+  line-height: 1.6;
   font-style: italic;
   flex-grow: 1;
-  margin-bottom: 2rem;
+  margin-bottom: 0.5rem;
 }
 
 .review-avatar {
@@ -84,7 +85,7 @@
 .audio-card {
   background-color: var(--color-darker);
   border-radius: 16px;
-  padding: 3rem;
+  padding: 2rem;
   box-shadow: 0 10px 30px rgba(0,0,0,0.2);
   border: 1px solid rgba(255,255,255,0.05);
   flex-grow: 1;
@@ -97,7 +98,7 @@
   display: flex;
   align-items: center;
   gap: 1rem;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .audio-badge {
@@ -124,7 +125,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .audio-title {
