@@ -6,10 +6,10 @@ const EmotionalHook = () => {
     <section className="emotional-hook section-padding">
       <div className="container">
         <div className="hook-content">
-          <h2 className="hook-title">¿Cuántas veces has callado lo que realmente deseas por miedo a destruir lo que tienes?</h2>
+          <h2 className="hook-title">Sé que no solo eres infiel, además te han sido infiel y posiblemente has sido la causa de una infidelidad</h2>
           <p className="hook-text">
-            Vivimos en una constante contradicción: buscando seguridad en una pareja, 
-            pero anhelando la libertad y el deseo que la seguridad a menudo apaga.
+            Sin importar cuál sea tu caso, la experiencia en algún momento ha sido dolorosa. 
+            La infidelidad te ha sentado en el banquillo de los acusados, pero también te ha convertido en un férreo juez acusador.
           </p>
           <div className="hook-divider"></div>
         </div>
