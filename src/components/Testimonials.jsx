@@ -19,7 +19,7 @@ const Testimonials = () => {
     {
       type: 'text',
       initials: "M.A.",
-      text: "Este libro me quitó un peso inmenso de encima. Entendí que mis deseos no me hacen una mala persona y pude hablar de mis fantasías sin culpa."
+      text: "Aunque cuestiona fuertemente y pone a tambalear nuestras creencias limitantes, siento que este libro se puede convertir en una herramienta de sanación."
     },
     {
       type: 'image',
