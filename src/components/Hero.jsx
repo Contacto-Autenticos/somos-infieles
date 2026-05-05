@@ -7,10 +7,10 @@ const Hero = () => {
     <section className="hero">
       <div className="container hero-container">
         <div className="hero-content">
-          <h1 className="hero-title" style={{ fontSize: '3.8rem', fontWeight: 'bold', color: 'var(--color-white)', lineHeight: '1.1', marginBottom: '1.5rem', textTransform: 'none' }}>
-            La verdad sobre la <br />
-            infidelidad que nadie <br />
-            se atreve a decirte.
+          <h1 className="hero-title" style={{ fontSize: '3.5rem', fontWeight: 'bold', color: 'var(--color-white)', lineHeight: '1.1', marginBottom: '1.5rem', textTransform: 'none' }}>
+            <span style={{ display: 'block' }}>La verdad sobre la</span>
+            <span style={{ display: 'block' }}>infidelidad que nadie</span>
+            <span style={{ display: 'block' }}>se atreve a decirte.</span>
           </h1>
           <p className="hero-description" style={{ marginBottom: '2rem' }}>
             Desafía tus creencias, rompe el ciclo del dolor y descubre por qué la traición es solo el síntoma de algo más profundo. Recupera tu poder personal y la claridad que necesitas hoy.
