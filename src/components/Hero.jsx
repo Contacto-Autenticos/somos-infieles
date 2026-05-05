@@ -13,7 +13,7 @@ const Hero = () => {
             <span style={{ display: 'block' }}>se atreve a decirte.</span>
           </h1>
           <p className="hero-description" style={{ marginBottom: '2rem' }}>
-            Desafía tus creencias, rompe el ciclo del dolor y descubre por qué la traición es solo el síntoma de algo más profundo. Recupera tu poder personal y la claridad que necesitas hoy.
+            Desafía tus creencias, rompe el ciclo del dolor y descubre por qué la mentira es solo el síntoma de algo más profundo. Recupera tu poder personal y la claridad que necesitas hoy.
           </p>
           
           <CTAButton text="QUIERO DESCUBRIR LA VERDAD" className="hero-cta" />
