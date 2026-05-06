@@ -252,8 +252,8 @@
     top: 1.2rem;
     right: 1rem;
   }
-.mobile-br {
-  display: none;
+.cat-part {
+  display: inline;
 }
 
 .desktop-sep {
@@ -262,6 +262,9 @@
 }
 
 @media (max-width: 768px) {
+  .cat-part {
+    display: block;
+  }
   .desktop-sep {
     display: none;
   }
@@ -271,9 +274,5 @@
   .audio-sample-tag {
     top: 1.2rem;
     right: 1rem;
-  }
-  .mobile-br {
-    display: block;
-    content: "";
   }
 }
