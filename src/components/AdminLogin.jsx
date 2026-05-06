@@ -10,10 +10,10 @@ const AdminLogin = ({ onLogin }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     
-    const correctUser = import.meta.env.VITE_ADMIN_USER;
-    const correctPass = import.meta.env.VITE_ADMIN_PASS;
+    const correctUser = import.meta.env.VITE_ADMIN_USER?.trim();
+    const correctPass = import.meta.env.VITE_ADMIN_PASS?.trim();
 
-    if (username === correctUser && password === correctPass) {
+    if (username.trim() === correctUser && password.trim() === correctPass) {
       setError(false);
       onLogin();
     } else {
