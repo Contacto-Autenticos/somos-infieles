@@ -123,7 +123,7 @@ export const Guarantee = () => (
           style={{ width: '620px', maxWidth: '100%', height: 'auto' }} 
         />
       </div>
-      <h2 className="responsive-title" style={{ marginBottom: '1.5rem', color: 'var(--color-black)' }}>
+      <h2 className="responsive-title" style={{ fontSize: '2.5rem', marginBottom: '1.5rem', color: 'var(--color-black)' }}>
         Tranquilo, tu compra está <span style={{ color: 'var(--color-gold)' }}>100% protegida.</span>
       </h2>
       <p style={{ fontSize: '1.2rem', lineHeight: '1.8', color: '#444' }}>
