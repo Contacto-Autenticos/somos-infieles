@@ -23,7 +23,7 @@ const Hero = () => {
         <div className="hero-image-wrapper">
           <div className="hero-glow"></div>
           <video 
-            src="/Animacion de libro sin sonido.mp4" 
+            src="/Animación de libro sin sonido 1.mp4" 
             className="hero-video" 
             autoPlay 
             loop 
