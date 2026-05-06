@@ -22,7 +22,7 @@ const Hero = () => {
         
         <div className="hero-image-wrapper">
           <div className="hero-glow"></div>
-          <div className="hero-video-crop">
+          <div className="hero-video-crop" style={{ overflow: 'hidden', position: 'relative' }}>
             <video 
               src="/Animacion de libro sin sonido.mp4" 
               className="hero-video" 
@@ -30,6 +30,7 @@ const Hero = () => {
               loop 
               muted 
               playsInline
+              style={{ display: 'block', width: '100%' }}
             />
           </div>
         </div>
