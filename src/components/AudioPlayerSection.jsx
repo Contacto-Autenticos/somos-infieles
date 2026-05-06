@@ -87,12 +87,12 @@ const AudioPlayerSection = () => {
               </div>
               
               <div className="audio-title-row">
-                <h3 className="audio-title">Capítulo 4: <br /><span>"Ya no eres dueño de nada"</span></h3>
+                <h3 className="audio-title">Capítulo 4: <br /><span>"No eres dueño de nada"</span></h3>
                 <span className="audio-sample-tag">MUESTRA</span>
               </div>
               
               <p className="audio-context-text">
-                En este crudo fragmento, exploramos ese instante donde la propiedad sobre tu propia vida se desvanece y te enfrentas a la realidad de que ya no eres dueño de nada.
+                En este crudo fragmento, exploramos ese instante donde la propiedad sobre tu propia vida se desvanece y te enfrentas a la realidad de que no eres dueño de nada.
               </p>
               
               <div className="audio-player-container">
