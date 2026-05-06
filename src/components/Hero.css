@@ -79,14 +79,22 @@
   z-index: 0;
 }
 
-.hero-image {
-  max-width: 100%;
+.hero-video-crop {
   width: 450px;
-  height: auto;
-  object-fit: contain;
+  max-width: 100%;
+  aspect-ratio: 1023 / 1500; /* Slightly shorter than 1537 to hide bottom */
+  overflow: hidden;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.8);
   z-index: 1;
-  border-radius: 12px;
-  filter: drop-shadow(0 20px 40px rgba(0,0,0,0.8));
+  position: relative;
+}
+
+.hero-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top; /* Keep the top of the book visible */
 }
 
 @media (max-width: 768px) {
@@ -105,7 +113,7 @@
     font-size: 1.1rem;
   }
   
-  .hero-image {
+  .hero-video-crop {
     max-width: 280px;
     margin: 0 auto;
   }

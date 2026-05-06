@@ -22,14 +22,16 @@ const Hero = () => {
         
         <div className="hero-image-wrapper">
           <div className="hero-glow"></div>
-          <video 
-            src="/Animacion de libro sin sonido.mp4" 
-            className="hero-image" 
-            autoPlay 
-            loop 
-            muted 
-            playsInline
-          />
+          <div className="hero-video-crop">
+            <video 
+              src="/Animacion de libro sin sonido.mp4" 
+              className="hero-video" 
+              autoPlay 
+              loop 
+              muted 
+              playsInline
+            />
+          </div>
         </div>
       </div>
     </section>
