@@ -14,9 +14,13 @@ import {
   Home,
   Building
 } from 'lucide-react';
+import AdminLogin from './AdminLogin';
 import './Admin.css';
 
 const Admin = () => {
+  const [isAuthenticated, setIsAuthenticated] = useState(
+    sessionStorage.getItem('adminAuth') === 'true'
+  );
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState({ total: 0, revenue: 0, pending: 0 });
@@ -102,6 +106,15 @@ const Admin = () => {
       default: return pkg;
     }
   };
+
+  const handleLoginSuccess = () => {
+    setIsAuthenticated(true);
+    sessionStorage.setItem('adminAuth', 'true');
+  };
+
+  if (!isAuthenticated) {
+    return <AdminLogin onLogin={handleLoginSuccess} />;
+  }
 
   return (
     <div className="admin-container">
