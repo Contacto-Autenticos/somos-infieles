@@ -1,0 +1,10 @@
+{
+  "record": {
+    "nombre": "Carlos Eduardo",
+    "email": "carlose.orozcob@gmail.com",
+    "numero_guia": "123456789",
+    "direccion": "Calle Falsa 123",
+    "ciudad": "Bogotá",
+    "id": "test-id"
+  }
+}

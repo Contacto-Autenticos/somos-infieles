@@ -38,7 +38,7 @@ const faqs = [
   },
   {
     question: '¿El libro está disponible físico o digital?',
-    answer: 'Podrás encontrarlo en versión física, en versión digital y en versión Audio libro. También puedes optar por "La Experiencia Total" que incluye todos los formatos.'
+    answer: 'Podrás encontrarlo en versión física, en versión digital y en versión Audiolibro. También puedes optar por "La Experiencia Total" que incluye todos los formatos.'
   },
   {
     question: '¿Por dónde puedo tener más información del libro?',

@@ -18,6 +18,36 @@ const Testimonials = () => {
   const items = [
     {
       type: 'text',
+      initials: "A.S.",
+      text: "Por fin lo terminé... No fue un libro sencillo de leer; me demoré porque era necesario procesar cada capítulo. Pero honestamente me dio los argumentos y explicaciones a esas ideas que siempre he tenido sobre la fidelidad e infidelidad."
+    },
+    {
+      type: 'text',
+      initials: "R.B.",
+      text: "¡Un libro que te permite ver las diferentes situaciones de otra forma! Contiene herramientas que me confrontaron y que habrían sido muy útiles si las hubiera tenido más joven. Recomendado para que los jóvenes entiendan cómo amar sin sufrir y sin hacer sufrir a los demás."
+    },
+    {
+      type: 'text',
+      initials: "G.V.",
+      text: "Es un libro muy bien escrito, fácil de leer, práctico y vigente. Permite abrir la mente a nuevas formas de relacionarnos con nuestro entorno y parejas, pero sobre todo con nosotros mismos. Más que respuestas, ofrece reflexiones y cuestionamientos que permiten hacer un análisis interno. 100% recomendado."
+    },
+    {
+      type: 'text',
+      initials: "M.R.",
+      text: "Muchas gracias Felipe. Aunque no he terminado el libro, te agradezco por aclararme las ideas confusas que me hacían pensar que estaba loca y sentirme apática a la realidad de las personas que me rodean. ¡Gracias por este libro!"
+    },
+    {
+      type: 'text',
+      initials: "L.G.",
+      text: "Es muy corto, ¡quedas con la sensación de leer más! Hay tantas cosas que decir acerca del tema, muero de ganas por una tertulia. Ya les compartí el link para comprarlo a otros amigos en un grupo. ¡Me encantó!"
+    },
+    {
+      type: 'text',
+      initials: "P.S.",
+      text: "Ya lo leí, y es exactamente lo que pensaba, te felicito porque no todos se lanzan a compartir lo que realmente es humano y a aceptar su naturaleza. Yo he perdido amores cuando les cuento cómo pienso y se asustan. De hecho hay mucha gente que, así sean infieles, prefieren pensar que hay algo malo en ellos antes de aceptar algo tan humano."
+    },
+    {
+      type: 'text',
       initials: "M.A.",
       text: "Aunque cuestiona fuertemente y pone a tambalear nuestras creencias limitantes, siento que este libro se puede convertir en una herramienta de sanación."
     },
@@ -29,7 +59,7 @@ const Testimonials = () => {
     {
       type: 'text',
       initials: "C.R.",
-      text: "Con palabras claras, un lenguaje sencillo y un mensaje directo, \"Somos infieles\" es muy ameno de leer, a menos que tu ego y creencias te pongan en conflicto"
+      text: "Con palabras claras, un lenguaje sencillo y un mensaje directo, \"Somos infieles\" es muy ameno de leer, a menos que tu ego y creencias te pongan en conflicto."
     },
     {
       type: 'image',
@@ -75,6 +105,11 @@ const Testimonials = () => {
       type: 'image',
       src: "/Testimonio 6.jpg",
       alt: "Lector de Somos infieles 6"
+    },
+    {
+      type: 'image',
+      src: "/Testimonio 7.jpg",
+      alt: "Lector de Somos infieles 7"
     }
   ];
 

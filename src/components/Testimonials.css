@@ -74,7 +74,7 @@
   flex-shrink: 0;
   background-color: #ffffff; /* Blanco puro para destacar del fondo grisáceo */
   border-radius: 12px;
-  padding: 2.5rem 2rem;
+  padding: 1.8rem 1.5rem;
   display: flex;
   flex-direction: column;
   box-shadow: 0 15px 40px rgba(0,0,0,0.1); /* Sombra más fuerte */
@@ -101,10 +101,10 @@
 
 .testimonial-text {
   color: #000000; /* Negro puro para máximo contraste */
-  font-size: 1.15rem;
-  line-height: 1.6;
+  font-size: 0.95rem;
+  line-height: 1.5;
   flex-grow: 1;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
   font-style: italic;
 }
 
@@ -113,7 +113,7 @@
   justify-content: space-between;
   align-items: center;
   border-top: 1px solid rgba(0,0,0,0.1);
-  padding-top: 1.5rem;
+  padding-top: 1rem;
 }
 
 .stars {

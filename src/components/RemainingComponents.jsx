@@ -68,7 +68,7 @@ export const AboutBook = () => (
         ¿Qué descubrirás <br /> <span style={{ whiteSpace: 'nowrap' }}>en "<span style={{ color: 'var(--color-gold)' }}>Somos</span> Infieles"?</span>
       </h2>
       <ul style={{ maxWidth: '600px', margin: '0 auto', listStyle: 'none', padding: 0 }}>
-        {["Por que somos infieles.", "La causa del sufrimiento en la infidelidad.", "Los motivos que nos llevan a ser infiel.", "Como hablar sobre la infidelidad con tu pareja."].map((item, i) => (
+        {["¿Por qué somos infieles?", "La causa del sufrimiento en la infidelidad.", "Los motivos que nos llevan a ser infieles.", "¿Cómo hablar sobre la infidelidad con tu pareja?"].map((item, i) => (
           <li key={i} style={{ marginBottom: '1.5rem', fontSize: '1.2rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
             <span style={{ color: 'var(--color-gold)', fontWeight: 'bold' }}>✓</span> {item}
           </li>
@@ -106,7 +106,7 @@ export const Author = () => (
           <p style={{ fontSize: '1.2rem', color: 'var(--color-gold)', marginBottom: '2rem', fontStyle: 'italic' }}>Escritor, mentor y speaker</p>
           
           <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--color-gray)', marginBottom: '1.5rem' }}>
-            Es economista y un apasionado buscador de la verdad que, durante casi dos décadas ha combinado su pasión por crear y de desarrollar negocios, con su profundo interés por entender, acompañar y potenciar los talentos naturales de los seres humanos a través de <a href="https://www.autenticos.co/" target="_blank" rel="noopener noreferrer" className="autenticos-link" style={{ color: 'var(--color-gold)', fontWeight: 'bold', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '1.3rem' }}>Auténticos <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>.
+            Es economista y un apasionado buscador de la verdad que durante casi dos décadas ha combinado su pasión por crear y desarrollar negocios con su profundo interés por entender, acompañar y potenciar los talentos naturales de los seres humanos a través de <a href="https://www.autenticos.co/" target="_blank" rel="noopener noreferrer" className="autenticos-link" style={{ color: 'var(--color-gold)', fontWeight: 'bold', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '1.3rem' }}>Auténticos <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg></a>.
           </p>
           
           <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--color-gray)', marginBottom: '1.5rem' }}>
@@ -116,7 +116,7 @@ export const Author = () => (
 
 
           <blockquote style={{ borderLeft: '4px solid var(--color-gold)', paddingLeft: '1.5rem', fontStyle: 'italic', fontSize: '1.2rem', color: 'var(--color-white)', margin: 0 }}>
-            «Sí esta obra salva una relación de pareja, un hogar, la vida de una persona o contribuye a que tengamos relaciones más sanas y honestas, habrá tenido sentido»
+            «Si esta obra salva una relación de pareja, un hogar, la vida de una persona o contribuye a que tengamos relaciones más sanas y honestas, habrá tenido sentido»
           </blockquote>
         </div>
       </div>
@@ -139,7 +139,7 @@ export const Guarantee = () => (
         Tranquilo, tu compra está <br /> <span style={{ color: 'var(--color-gold)' }}>100% protegida.</span>
       </h2>
       <p className="guarantee-text">
-        Si por cualquier motivo no has recibido el libro en un plazo de 7 días. Podrás solicitar el reembolso completo, sin complicaciones.
+        Si por cualquier motivo no has recibido el libro en un plazo de 7 días, <br /> podrás solicitar el reembolso completo.
       </p>
       <CTAButton text="Sí, lo necesito" className="mt-16" darkNote={true} />
     </div>
