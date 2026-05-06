@@ -55,6 +55,23 @@ const Admin = () => {
     }
   };
 
+  const handleToggleDespacho = async (id, currentStatus) => {
+    try {
+      const { error } = await supabase
+        .from('compradores_somos_infieles')
+        .update({ despachado: !currentStatus })
+        .eq('id', id);
+
+      if (error) throw error;
+
+      // Update local state
+      setOrders(prev => prev.map(o => o.id === id ? { ...o, despachado: !currentStatus } : o));
+    } catch (err) {
+      console.error('Error updating despacho:', err);
+      alert('No se pudo actualizar el estado de despacho.');
+    }
+  };
+
   const calculateStats = (data) => {
     const total = data.length;
     const revenue = data
@@ -91,7 +108,7 @@ const Admin = () => {
       <div className="admin-header">
         <div className="admin-title">
           <CreditCard size={32} color="var(--color-gold)" />
-          <span>Transacciones Wompi</span>
+          <span>Transacciones</span>
         </div>
 
         <div className="admin-filters">
@@ -149,6 +166,7 @@ const Admin = () => {
                 <th>Correo / Teléfono</th>
                 <th>Ubicación</th>
                 <th>Vivienda / Torre / Apto</th>
+                <th>Despacho</th>
                 <th>Fecha y Hora</th>
               </tr>
             </thead>
@@ -201,6 +219,16 @@ const Admin = () => {
                           T: {order.piso} | Apto: {order.apartamento}
                         </div>
                       )}
+                    </td>
+                    <td>
+                      <div style={{ display: 'flex', justifyContent: 'center' }}>
+                        <input 
+                          type="checkbox" 
+                          checked={order.despachado || false} 
+                          onChange={() => handleToggleDespacho(order.id, order.despachado)}
+                          style={{ width: '20px', height: '20px', cursor: 'pointer' }}
+                        />
+                      </div>
                     </td>
                     <td style={{ fontSize: '0.85rem', opacity: 0.8 }}>
                       {formatDate(order.created_at)}
