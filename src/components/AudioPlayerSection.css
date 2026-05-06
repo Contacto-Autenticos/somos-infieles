@@ -256,7 +256,15 @@
   display: none;
 }
 
+.desktop-sep {
+  display: inline;
+  margin: 0 4px;
+}
+
 @media (max-width: 768px) {
+  .desktop-sep {
+    display: none;
+  }
   .audio-info {
     padding-right: 90px;
   }
