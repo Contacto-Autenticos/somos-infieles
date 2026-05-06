@@ -22,7 +22,14 @@ const Hero = () => {
         
         <div className="hero-image-wrapper">
           <div className="hero-glow"></div>
-          <img src="/Libro Somos infieles.png" alt="Libro Somos Infieles" className="hero-image" />
+          <video 
+            src="/Animacion de libro sin sonido.mp4" 
+            className="hero-image" 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+          />
         </div>
       </div>
     </section>
