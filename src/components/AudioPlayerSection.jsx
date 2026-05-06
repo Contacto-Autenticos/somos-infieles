@@ -87,7 +87,7 @@ const AudioPlayerSection = () => {
               </div>
               
               <div className="audio-title-row">
-                <h3 className="audio-title">Capitulo 3 - La rutina prolongada es un estado de agonía</h3>
+                <h3 className="audio-title">Capitulo 3 - La rutina prolongada es <br /> un estado de agonía</h3>
                 <span className="audio-sample-tag">MUESTRA</span>
               </div>
               
