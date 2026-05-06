@@ -27,7 +27,7 @@ const Hero = () => {
               <Book 
                 title="Somos Infieles" 
                 coverImage="/Libro Somos infieles.png"
-                width={{ sm: 220, md: 280, lg: 300, xl: 320 }}
+                width={{ sm: 160, md: 220, lg: 240, xl: 260 }}
                 textured={true}
               />
             </div>
