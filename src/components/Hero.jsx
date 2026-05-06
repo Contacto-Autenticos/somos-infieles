@@ -1,6 +1,5 @@
 import React from 'react';
 import CTAButton from './CTAButton';
-import { Book } from './ui/book';
 import './Hero.css';
 
 const Hero = () => {
@@ -22,16 +21,8 @@ const Hero = () => {
         </div>
         
         <div className="hero-image-wrapper">
-          <div className="hero-right">
-            <div className="hero-book-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-              <Book 
-                title="Somos Infieles" 
-                coverImage="/SOMOS INFIELES_portada.jpg"
-                width={{ sm: 280, md: 350, lg: 400, xl: 450 }}
-                textured={true}
-              />
-            </div>
-          </div>
+          <div className="hero-glow"></div>
+          <img src="/Libro Somos infieles.png" alt="Libro Somos Infieles" className="hero-image" />
         </div>
       </div>
     </section>
