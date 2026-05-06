@@ -81,3 +81,9 @@
   opacity: 1;
   color: var(--color-gold);
 }
+
+@media (max-width: 768px) {
+  .faq-title {
+    font-size: 2.2rem;
+  }
+}

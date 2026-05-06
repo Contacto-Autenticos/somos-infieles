@@ -33,7 +33,7 @@ const Linkedin = ({ size = 24 }) => (
 export const Transformation = () => (
   <section className="section-padding" style={{ backgroundColor: 'var(--color-white)' }}>
     <div className="container" style={{ textAlign: 'center' }}>
-      <h2 style={{ fontSize: '2.5rem', marginBottom: '2rem', color: 'var(--color-gold)', lineHeight: '1.1' }}>La revelación que cambiará tus relaciones</h2>
+      <h2 className="responsive-title" style={{ color: 'var(--color-gold)', lineHeight: '1.1', textAlign: 'center', marginBottom: '2rem' }}>La revelación que cambiará tus relaciones</h2>
       <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
         <div style={{ flex: 1, minWidth: '300px', padding: '2rem', background: 'var(--color-gray)', borderRadius: '8px' }}>
           <h3 style={{ color: 'var(--color-black)', opacity: 0.6, textDecoration: 'line-through' }}>Antes del libro</h3>
@@ -91,7 +91,7 @@ export const Author = () => (
           />
         </div>
         <div style={{ flex: '1 1 500px' }}>
-          <h2 style={{ fontSize: '2.5rem', marginBottom: '0.5rem', color: 'var(--color-white)' }}>Felipe Beltrán Hernández</h2>
+          <h2 className="responsive-title" style={{ marginBottom: '0.5rem', color: 'var(--color-white)' }}>Felipe Beltrán Hernández</h2>
           <p style={{ fontSize: '1.2rem', color: 'var(--color-gold)', marginBottom: '2rem', fontStyle: 'italic' }}>Escritor, mentor y speaker</p>
           
           <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--color-gray)', marginBottom: '1.5rem' }}>
@@ -124,7 +124,7 @@ export const Guarantee = () => (
           style={{ width: '620px', maxWidth: '100%', height: 'auto' }} 
         />
       </div>
-      <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', color: 'var(--color-black)' }}>
+      <h2 className="responsive-title" style={{ marginBottom: '1.5rem', color: 'var(--color-black)' }}>
         Tranquilo, tu compra está <span style={{ color: 'var(--color-gold)' }}>100% protegida.</span>
       </h2>
       <p style={{ fontSize: '1.2rem', lineHeight: '1.8', color: '#444' }}>

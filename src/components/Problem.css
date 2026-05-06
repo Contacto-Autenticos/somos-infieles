@@ -48,3 +48,13 @@
   color: var(--color-gray);
   margin: 0;
 }
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 2.2rem;
+  }
+  
+  .problem-item {
+    padding: 1rem 1.5rem;
+  }
+}

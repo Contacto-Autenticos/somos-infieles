@@ -207,6 +207,9 @@
 }
 
 @media (max-width: 992px) {
+  .pricing-title {
+    font-size: 2.2rem;
+  }
   .pricing-card.vip {
     transform: scale(1);
     order: 1; /* El de $22 primero */
