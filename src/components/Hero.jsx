@@ -8,9 +8,7 @@ const Hero = () => {
       <div className="container hero-container">
         <div className="hero-content">
           <h1 className="hero-title">
-            <span style={{ display: 'block' }}>La verdad sobre la</span>
-            <span style={{ display: 'block' }}>infidelidad que nadie</span>
-            <span style={{ display: 'block' }}>se atreve a decirte.</span>
+            La verdad sobre la infidelidad que nadie se atreve a decirte.
           </h1>
           <p className="hero-description">
             Desafía tus creencias, rompe el ciclo del dolor y descubre por qué la mentira es solo el síntoma de algo más profundo.
