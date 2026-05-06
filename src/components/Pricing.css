@@ -226,6 +226,13 @@
   .pricing-card.vip:hover {
     transform: translateY(-10px);
   }
+  
+  .last-units-badge {
+    white-space: nowrap;
+    font-size: 0.7rem !important;
+    padding: 6px 10px !important;
+    letter-spacing: 0px;
+  }
 }
 
 /* Scarcity Elements */
