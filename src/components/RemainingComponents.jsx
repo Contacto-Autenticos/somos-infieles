@@ -52,6 +52,18 @@ export const Transformation = () => (
 export const AboutBook = () => (
   <section className="section-padding" style={{ backgroundColor: 'var(--color-dark)' }}>
     <div className="container">
+      <div className="video-wrapper" style={{ maxWidth: '800px', margin: '0 auto 3.5rem', borderRadius: '16px', overflow: 'hidden', boxShadow: '0 20px 50px rgba(0,0,0,0.5)', border: '1px solid rgba(255,255,255,0.1)' }}>
+        <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
+          <iframe
+            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+            src="https://www.youtube.com/embed/VIDEO_ID_AQUÍ"
+            title="YouTube video player"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </div>
       <h2 className="responsive-title" style={{ marginBottom: '3rem', textAlign: 'center', color: 'var(--color-white)', lineHeight: '1.2' }}>
         ¿Qué descubrirás <br /> <span style={{ whiteSpace: 'nowrap' }}>en "<span style={{ color: 'var(--color-gold)' }}>Somos</span> Infieles"?</span>
       </h2>
