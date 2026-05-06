@@ -136,8 +136,12 @@
 }
 
 @media (max-width: 768px) {
+  .audio-title-gold {
+    font-size: 1.25rem;
+  }
   .gold-line {
     display: block;
+    white-space: nowrap;
     margin-right: 0;
   }
 }
@@ -244,14 +248,7 @@
   }
 }
 
-@media (max-width: 480px) {
-  .audio-info {
-    padding-right: 90px;
-  }
-  .audio-sample-tag {
-    top: 1.2rem;
-    right: 1rem;
-  }
+
 .cat-part {
   display: inline;
 }
@@ -269,7 +266,7 @@
     display: none;
   }
   .audio-info {
-    padding-right: 90px;
+    padding-right: 20px;
   }
   .audio-sample-tag {
     top: 1.2rem;
