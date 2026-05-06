@@ -1,0 +1,219 @@
+import React, { useState, useEffect } from 'react';
+import { supabase } from '../supabaseClient';
+import { 
+  CreditCard, 
+  Search, 
+  RefreshCcw, 
+  Calendar, 
+  Filter, 
+  Download,
+  User,
+  Mail,
+  Phone,
+  MapPin,
+  Home,
+  Building
+} from 'lucide-react';
+import './Admin.css';
+
+const Admin = () => {
+  const [orders, setOrders] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [stats, setStats] = useState({ total: 0, revenue: 0, pending: 0 });
+  const [dateFrom, setDateFrom] = useState('');
+  const [dateTo, setDateTo] = useState('');
+
+  useEffect(() => {
+    fetchOrders();
+  }, []);
+
+  const fetchOrders = async () => {
+    setLoading(true);
+    try {
+      let query = supabase
+        .from('compradores_somos_infieles')
+        .select('*')
+        .order('created_at', { ascending: false });
+
+      if (dateFrom) {
+        query = query.gte('created_at', `${dateFrom}T00:00:00`);
+      }
+      if (dateTo) {
+        query = query.lte('created_at', `${dateTo}T23:59:59`);
+      }
+
+      const { data, error } = await query;
+
+      if (error) throw error;
+
+      setOrders(data || []);
+      calculateStats(data || []);
+    } catch (err) {
+      console.error('Error fetching orders:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const calculateStats = (data) => {
+    const total = data.length;
+    const revenue = data
+      .filter(o => o.estado_pago === 'pagado')
+      .reduce((acc, o) => acc + (o.precio_usd || 0), 0);
+    const pending = data.filter(o => o.estado_pago !== 'pagado').length;
+
+    setStats({ total, revenue, pending });
+  };
+
+  const formatDate = (dateStr) => {
+    const date = new Date(dateStr);
+    return date.toLocaleDateString('es-ES', {
+      day: 'numeric',
+      month: 'short',
+      year: 'numeric'
+    }) + ' ' + date.toLocaleTimeString('es-ES', {
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  };
+
+  const getPackageLabel = (pkg) => {
+    switch(pkg) {
+      case 'digital': return 'Digital + Audio';
+      case 'physical': return 'Solo Físico';
+      case 'vip': return 'Experiencia VIP';
+      default: return pkg;
+    }
+  };
+
+  return (
+    <div className="admin-container">
+      <div className="admin-header">
+        <div className="admin-title">
+          <CreditCard size={32} color="var(--color-gold)" />
+          <span>Transacciones Wompi</span>
+        </div>
+
+        <div className="admin-filters">
+          <div className="filter-group">
+            <label><Calendar size={16} /> Desde:</label>
+            <input 
+              type="date" 
+              value={dateFrom} 
+              onChange={(e) => setDateFrom(e.target.value)} 
+            />
+          </div>
+          <div className="filter-group">
+            <label><Calendar size={16} /> Hasta:</label>
+            <input 
+              type="date" 
+              value={dateTo} 
+              onChange={(e) => setDateTo(e.target.value)} 
+            />
+          </div>
+          <button className="btn-apply" onClick={fetchOrders}>
+            <Filter size={18} /> Aplicar
+          </button>
+          <button className="btn-refresh" onClick={fetchOrders} title="Actualizar">
+            <RefreshCcw size={20} className={loading ? 'spinner' : ''} />
+          </button>
+        </div>
+      </div>
+
+      <div className="admin-stats">
+        <div className="stat-card">
+          <div className="stat-label">Total Pedidos</div>
+          <div className="stat-value">{stats.total}</div>
+        </div>
+        <div className="stat-card">
+          <div className="stat-label">Recaudado (USD)</div>
+          <div className="stat-value">${stats.revenue}</div>
+        </div>
+        <div className="stat-card">
+          <div className="stat-label">Pendientes</div>
+          <div className="stat-value">{stats.pending}</div>
+        </div>
+      </div>
+
+      <div className="table-container">
+        {loading ? (
+          <div style={{ padding: '4rem', textAlign: 'center' }}>Cargando datos...</div>
+        ) : (
+          <table className="admin-table">
+            <thead>
+              <tr>
+                <th>Estado</th>
+                <th>Monto</th>
+                <th>Paquete</th>
+                <th>Comprador</th>
+                <th>Correo / Teléfono</th>
+                <th>Ubicación</th>
+                <th>Vivienda / Torre / Apto</th>
+                <th>Fecha y Hora</th>
+              </tr>
+            </thead>
+            <tbody>
+              {orders.length === 0 ? (
+                <tr>
+                  <td colSpan="8" style={{ textAlign: 'center', padding: '3rem' }}>No hay transacciones registradas</td>
+                </tr>
+              ) : (
+                orders.map((order) => (
+                  <tr key={order.id}>
+                    <td>
+                      <span className={`status-badge ${order.estado_pago || 'pendiente'}`}>
+                        {order.estado_pago || 'pendiente'}
+                      </span>
+                    </td>
+                    <td className="col-monto">
+                      ${order.precio_usd} USD
+                      <div style={{ fontSize: '0.75rem', opacity: 0.6 }}>~ ${order.precio_cop?.toLocaleString()} COP</div>
+                    </td>
+                    <td>
+                      <span style={{ fontWeight: 600 }}>{getPackageLabel(order.paquete)}</span>
+                    </td>
+                    <td className="col-comprador">
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <User size={14} /> {order.nombre}
+                      </div>
+                    </td>
+                    <td className="col-email">
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <Mail size={14} /> {order.email}
+                      </div>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginTop: '4px' }}>
+                        <Phone size={14} /> {order.telefono}
+                      </div>
+                    </td>
+                    <td>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <MapPin size={14} /> {order.ciudad || 'N/A'}
+                      </div>
+                      <div style={{ fontSize: '0.85rem', marginTop: '4px' }}>{order.direccion || '-'}</div>
+                    </td>
+                    <td>
+                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        {order.tipo_vivienda === 'casa' ? <Home size={14} /> : <Building size={14} />}
+                        {order.tipo_vivienda === 'casa' ? 'Casa' : (order.nombre_unidad || 'Unidad')}
+                      </div>
+                      {order.tipo_vivienda === 'unidad' && (
+                        <div style={{ fontSize: '0.85rem', marginTop: '4px', opacity: 0.8 }}>
+                          T: {order.piso} | Apto: {order.apartamento}
+                        </div>
+                      )}
+                    </td>
+                    <td style={{ fontSize: '0.85rem', opacity: 0.8 }}>
+                      {formatDate(order.created_at)}
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        )}
+      </div>
+    </div>
+  );
+};
+
+export default Admin;
