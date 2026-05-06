@@ -123,17 +123,22 @@
   line-height: 1.2;
 }
 
-.audio-title span {
+.audio-title-gold {
   display: block;
   margin-top: 0.5rem;
   color: var(--color-gold);
   font-size: 1.4rem;
-  white-space: nowrap;
+}
+
+.gold-line {
+  display: inline-block;
+  margin-right: 0.3rem;
 }
 
 @media (max-width: 768px) {
-  .audio-title span {
-    white-space: normal;
+  .gold-line {
+    display: block;
+    margin-right: 0;
   }
 }
 
