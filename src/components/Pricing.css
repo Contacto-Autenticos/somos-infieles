@@ -209,7 +209,15 @@
 @media (max-width: 992px) {
   .pricing-card.vip {
     transform: scale(1);
-    order: -1;
+    order: 1; /* El de $22 primero */
+  }
+  
+  .pricing-card.standard {
+    order: 2; /* El de $20 segundo */
+  }
+  
+  .pricing-card.basic {
+    order: 3; /* El de $15 tercero */
   }
   
   .pricing-card.vip:hover {
