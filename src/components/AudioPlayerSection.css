@@ -231,3 +231,13 @@
     flex-direction: column;
   }
 }
+
+@media (max-width: 480px) {
+  .audio-info {
+    padding-right: 90px;
+  }
+  .audio-sample-tag {
+    top: 1.2rem;
+    right: 1rem;
+  }
+}

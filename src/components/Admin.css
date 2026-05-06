@@ -202,6 +202,52 @@
   border-left: 4px solid var(--color-gold);
 }
 
+.stat-card.stat-revenue {
+  border-left-color: #22c55e; /* Green */
+}
+
+.stat-card.stat-pending {
+  border-left-color: #f59e0b; /* Amber/Orange */
+}
+
+.stat-split {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 0.5rem;
+}
+
+.split-item {
+  flex: 1;
+}
+
+.split-value {
+  font-size: 1.4rem;
+  font-weight: 800;
+  margin-bottom: 2px;
+}
+
+.split-value.confirmed {
+  color: #22c55e;
+}
+
+.split-value.pending {
+  color: #856404;
+}
+
+.split-label {
+  font-size: 0.75rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.split-divider {
+  width: 1px;
+  height: 30px;
+  background-color: #eee;
+}
+
 .stat-label {
   font-size: 0.9rem;
   color: #666;
@@ -299,4 +345,26 @@
     flex-direction: column;
     align-items: stretch;
   }
+}
+.tracking-input {
+  width: 120px;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  background-color: #f9f9f9;
+  transition: all 0.2s;
+}
+
+.tracking-input:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  background-color: white;
+  box-shadow: 0 0 0 3px rgba(220, 190, 60, 0.1);
+}
+
+.tracking-input:disabled {
+  background-color: #eee;
+  cursor: not-allowed;
+  opacity: 0.7;
 }

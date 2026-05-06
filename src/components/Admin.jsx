@@ -25,7 +25,13 @@ const Admin = () => {
   );
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [stats, setStats] = useState({ total: 0, revenue: 0, pending: 0 });
+  const [stats, setStats] = useState({ 
+    total: 0, 
+    confirmed: 0, 
+    pendingPayment: 0, 
+    revenue: 0, 
+    pendingDispatch: 0 
+  });
   const [dateFrom, setDateFrom] = useState('');
   const [dateTo, setDateTo] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
@@ -79,14 +85,38 @@ const Admin = () => {
     }
   };
 
+  const handleUpdateGuia = async (id, numeroGuia) => {
+    try {
+      const { error } = await supabase
+        .from('compradores_somos_infieles')
+        .update({ numero_guia: numeroGuia })
+        .eq('id', id);
+
+      if (error) throw error;
+
+      // Update local state
+      setOrders(prev => prev.map(o => o.id === id ? { ...o, numero_guia: numeroGuia } : o));
+    } catch (err) {
+      console.error('Error updating tracking number:', err);
+    }
+  };
+
   const calculateStats = (data) => {
     const total = data.length;
+    const confirmed = data.filter(o => o.estado_pago === 'pagado').length;
+    const pendingPayment = data.filter(o => o.estado_pago !== 'pagado').length;
+    
     const revenue = data
       .filter(o => o.estado_pago === 'pagado')
       .reduce((acc, o) => acc + (o.precio_usd || 0), 0);
-    const pending = data.filter(o => o.estado_pago !== 'pagado').length;
+      
+    const pendingDispatch = data.filter(o => 
+      (o.paquete === 'physical' || o.paquete === 'vip') && 
+      o.estado_pago === 'pagado' && 
+      !o.despachado
+    ).length;
 
-    setStats({ total, revenue, pending });
+    setStats({ total, confirmed, pendingPayment, revenue, pendingDispatch });
   };
 
   const formatDate = (dateStr) => {
@@ -182,15 +212,25 @@ const Admin = () => {
       <div className="admin-stats">
         <div className="stat-card">
           <div className="stat-label">Total Pedidos</div>
-          <div className="stat-value">{stats.total}</div>
+          <div className="stat-split">
+            <div className="split-item">
+              <div className="split-value confirmed">{stats.confirmed}</div>
+              <div className="split-label">Confirmados</div>
+            </div>
+            <div className="split-divider"></div>
+            <div className="split-item">
+              <div className="split-value pending">{stats.pendingPayment}</div>
+              <div className="split-label">Pendientes</div>
+            </div>
+          </div>
         </div>
-        <div className="stat-card">
+        <div className="stat-card stat-revenue">
           <div className="stat-label">Recaudado (USD)</div>
           <div className="stat-value">${stats.revenue}</div>
         </div>
-        <div className="stat-card">
-          <div className="stat-label">Pendientes</div>
-          <div className="stat-value">{stats.pending}</div>
+        <div className="stat-card stat-pending">
+          <div className="stat-label">Pendientes por Despacho</div>
+          <div className="stat-value">{stats.pendingDispatch}</div>
         </div>
       </div>
 
@@ -209,13 +249,14 @@ const Admin = () => {
                 <th>Ubicación</th>
                 <th>Vivienda / Torre / Apto</th>
                 <th>Despacho</th>
+                <th># Guía <br /> Coordinadora</th>
                 <th>Fecha y Hora</th>
               </tr>
             </thead>
             <tbody>
               {orders.length === 0 ? (
                 <tr>
-                  <td colSpan="8" style={{ textAlign: 'center', padding: '3rem' }}>No hay transacciones registradas</td>
+                  <td colSpan="9" style={{ textAlign: 'center', padding: '3rem' }}>No hay transacciones registradas</td>
                 </tr>
               ) : (
                 orders.map((order) => (
@@ -252,25 +293,53 @@ const Admin = () => {
                       <div style={{ fontSize: '0.85rem', marginTop: '4px' }}>{order.direccion || '-'}</div>
                     </td>
                     <td>
-                      <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        {order.tipo_vivienda === 'casa' ? <Home size={14} /> : <Building size={14} />}
-                        {order.tipo_vivienda === 'casa' ? 'Casa' : (order.nombre_unidad || 'Unidad')}
-                      </div>
-                      {order.tipo_vivienda === 'unidad' && (
-                        <div style={{ fontSize: '0.85rem', marginTop: '4px', opacity: 0.8 }}>
-                          T: {order.piso} | Apto: {order.apartamento}
+                      {order.paquete === 'digital' ? (
+                        <div style={{ color: '#aaa', fontSize: '0.85rem' }}>N/A</div>
+                      ) : (
+                        <>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            {order.tipo_vivienda === 'casa' ? <Home size={14} /> : <Building size={14} />}
+                            {order.tipo_vivienda === 'casa' ? 'Casa' : (order.nombre_unidad || 'Unidad')}
+                          </div>
+                          {order.tipo_vivienda === 'unidad' && (
+                            <div style={{ fontSize: '0.85rem', marginTop: '4px', opacity: 0.8 }}>
+                              T: {order.piso} | Apto: {order.apartamento}
+                            </div>
+                          )}
+                        </>
+                      )}
+                    </td>
+                    <td>
+                      {order.paquete === 'digital' ? (
+                        <div style={{ textAlign: 'center', color: '#aaa', fontSize: '0.85rem' }}>N/A</div>
+                      ) : (
+                        <div style={{ display: 'flex', justifyContent: 'center' }}>
+                          <input 
+                            type="checkbox" 
+                            checked={order.despachado || false} 
+                            onChange={() => handleToggleDespacho(order.id, order.despachado)}
+                            style={{ width: '20px', height: '20px', cursor: 'pointer' }}
+                          />
                         </div>
                       )}
                     </td>
                     <td>
-                      <div style={{ display: 'flex', justifyContent: 'center' }}>
+                      {order.paquete === 'digital' ? (
+                        <div style={{ textAlign: 'center', color: '#aaa', fontSize: '0.85rem' }}>N/A</div>
+                      ) : (
                         <input 
-                          type="checkbox" 
-                          checked={order.despachado || false} 
-                          onChange={() => handleToggleDespacho(order.id, order.despachado)}
-                          style={{ width: '20px', height: '20px', cursor: 'pointer' }}
+                          type="text"
+                          className="tracking-input"
+                          placeholder="Ej: 123456"
+                          value={order.numero_guia || ''}
+                          disabled={order.despachado}
+                          onChange={(e) => {
+                            const val = e.target.value;
+                            setOrders(prev => prev.map(o => o.id === order.id ? { ...o, numero_guia: val } : o));
+                          }}
+                          onBlur={(e) => handleUpdateGuia(order.id, e.target.value)}
                         />
-                      </div>
+                      )}
                     </td>
                     <td style={{ fontSize: '0.85rem', opacity: 0.8 }}>
                       {formatDate(order.created_at)}

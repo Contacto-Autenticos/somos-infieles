@@ -42,6 +42,7 @@ const PaymentStatus = ({ status, onBack }) => {
         {status === 'approved' && (
           <div className="status-details">
             <p>📧 Revisa tu bandeja de entrada (y la carpeta de spam)</p>
+            <p className="promo-note">💡 Revisa tu carpeta de <strong>Promociones</strong> y arrastra nuestro correo a la <strong>Bandeja Principal</strong> para no perderte nada.</p>
             <p>📖 ¡Disfruta la lectura!</p>
           </div>
         )}
