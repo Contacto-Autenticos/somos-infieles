@@ -65,5 +65,13 @@
 @media (max-width: 992px) {
   .sticky-mobile-cta {
     display: block;
+    bottom: 20px;
+    right: 15px;
+  }
+
+  .sticky-btn {
+    padding: 1rem 1.8rem;
+    font-size: 1.1rem;
+    box-shadow: 0 4px 20px rgba(220, 190, 60, 0.5);
   }
 }
