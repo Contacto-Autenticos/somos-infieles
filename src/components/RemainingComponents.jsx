@@ -53,7 +53,7 @@ export const AboutBook = () => (
   <section className="section-padding" style={{ backgroundColor: 'var(--color-dark)' }}>
     <div className="container">
       <h2 className="responsive-title" style={{ marginBottom: '3rem', textAlign: 'center', color: 'var(--color-white)', lineHeight: '1.2' }}>
-        ¿Qué descubrirás <br /> en "<span style={{ color: 'var(--color-gold)' }}>Somos</span> Infieles"?
+        ¿Qué descubrirás <br /> <span style={{ whiteSpace: 'nowrap' }}>en "<span style={{ color: 'var(--color-gold)' }}>Somos</span> Infieles"?</span>
       </h2>
       <ul style={{ maxWidth: '600px', margin: '0 auto', listStyle: 'none', padding: 0 }}>
         {["El origen biológico y psicológico del deseo.", "Por qué la monogamia es un acuerdo, no una condición natural.", "Cómo separar el amor del deseo sexual.", "Herramientas para hablar de fantasías con tu pareja sin destruir la relación."].map((item, i) => (
