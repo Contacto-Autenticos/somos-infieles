@@ -33,7 +33,7 @@ const Linkedin = ({ size = 24 }) => (
 export const Transformation = () => (
   <section className="section-padding" style={{ backgroundColor: 'var(--color-white)' }}>
     <div className="container" style={{ textAlign: 'center' }}>
-      <h2 style={{ fontSize: '2.5rem', marginBottom: '2rem', color: 'var(--color-gold)' }}>La revelación que cambiará tus relaciones</h2>
+      <h2 style={{ fontSize: '2.5rem', marginBottom: '2rem', color: 'var(--color-gold)', lineHeight: '1.1' }}>La revelación que cambiará tus relaciones</h2>
       <div style={{ display: 'flex', gap: '2rem', justifyContent: 'center', flexWrap: 'wrap' }}>
         <div style={{ flex: 1, minWidth: '300px', padding: '2rem', background: 'var(--color-gray)', borderRadius: '8px' }}>
           <h3 style={{ color: 'var(--color-black)', opacity: 0.6, textDecoration: 'line-through' }}>Antes del libro</h3>
