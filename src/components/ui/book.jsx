@@ -36,7 +36,7 @@ export const Book = ({
   return (
     <div className="inline-block w-fit" style={{ perspective: 900 }}>
       <div
-        className="aspect-[49/60] w-fit relative rotate-0 duration-[250ms] book-rotate"
+        className="aspect-[1023/1537] w-fit relative rotate-0 duration-[250ms] book-rotate"
         style={{ transformStyle: "preserve-3d", minWidth: _width, containerType: "inline-size" }}
       >
         <div
