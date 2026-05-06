@@ -295,14 +295,14 @@
 
 @media (max-width: 500px) {
   .payment-methods-logos {
-    gap: 1rem;
+    gap: 1.5rem;
   }
   
   .payment-logo {
-    height: 16px;
+    height: 28px;
   }
   
-  .mp-logo {
-    height: 20px;
+  .mp-logo-img {
+    height: 36px;
   }
 }

@@ -43,11 +43,7 @@
   position: relative;
 }
 
-.review-header {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1rem;
-}
+
 
 .review-title {
   color: var(--color-black);
@@ -92,38 +88,29 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
 }
 
-.audio-header {
+
+
+.audio-info {
   display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  flex-direction: column;
 }
 
-.audio-badge {
-  background-color: var(--color-white);
-  color: var(--color-black);
-  font-weight: 800;
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  font-size: 0.9rem;
-}
-
-.audio-subtitle {
+.audio-category {
+  display: block;
   color: var(--color-gray);
-  font-size: 0.8rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
   letter-spacing: 2px;
   opacity: 0.6;
+  margin-bottom: 1rem;
 }
 
 .audio-title-row {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   margin-bottom: 1rem;
 }
@@ -137,6 +124,8 @@
 }
 
 .audio-title span {
+  display: block;
+  margin-top: 0.5rem;
   color: var(--color-gold);
   font-size: 1.4rem;
 }
@@ -151,12 +140,16 @@
 }
 
 .audio-sample-tag {
-  background-color: rgba(255,255,255,0.1);
-  padding: 0.3rem 0.8rem;
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  padding: 0.3rem 1rem;
   border-radius: 20px;
-  font-size: 0.7rem;
+  font-size: 0.75rem;
+  font-weight: 800;
   letter-spacing: 1px;
-  color: var(--color-white);
 }
 
 .audio-player-container {

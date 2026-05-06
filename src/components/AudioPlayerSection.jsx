@@ -71,9 +71,6 @@ const AudioPlayerSection = () => {
           <div className="media-right">
             
             <div className="review-card">
-              <div className="review-header">
-                <span className="review-source" style={{color: '#aaa', fontSize:'0.8rem', textAlign: 'right', width: '100%'}}>Felipe Beltrán</span>
-              </div>
               <h3 className="review-title">Sobre la Fidelidad</h3>
               <p className="review-text">
                 "FIDELIDAD: Lealtad profesada por uno mismo e incluso por otras personas, cuando se alcanza la coherencia entre pensamiento, palabra y obra, logrando reproducir una realidad de manera puntual y exacta, en la que no exista la posibilidad de albergar la mentira como un recurso cotidiano en el relacionamiento de los seres humanos."
@@ -81,13 +78,12 @@ const AudioPlayerSection = () => {
             </div>
             
             <div className="audio-card">
-              <div className="audio-header">
-                <span className="audio-badge">FB</span>
-                <span className="audio-subtitle">Somos infieles</span>
-              </div>
               
               <div className="audio-title-row">
-                <h3 className="audio-title">Capítulo 4: <br /><span>"No eres dueño de nada"</span></h3>
+                <div className="audio-info">
+                  <span className="audio-category">Audiolibro Somos infieles</span>
+                  <h3 className="audio-title">Capítulo cuatro: <span>"No eres dueño de nada"</span></h3>
+                </div>
                 <span className="audio-sample-tag">MUESTRA</span>
               </div>
               
