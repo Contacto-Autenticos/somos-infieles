@@ -68,7 +68,7 @@ export const AboutBook = () => (
         ¿Qué descubrirás <br /> <span style={{ whiteSpace: 'nowrap' }}>en "<span style={{ color: 'var(--color-gold)' }}>Somos</span> Infieles"?</span>
       </h2>
       <ul style={{ maxWidth: '600px', margin: '0 auto', listStyle: 'none', padding: 0 }}>
-        {["El origen biológico y psicológico del deseo.", "Por qué la monogamia es un acuerdo, no una condición natural.", "Cómo separar el amor del deseo sexual.", "Herramientas para hablar de fantasías con tu pareja sin destruir la relación."].map((item, i) => (
+        {["Por que somos infieles.", "La causa del sufrimiento en la infidelidad.", "Los motivos que nos llevan a ser infiel.", "Como hablar sobre la infidelidad con tu pareja."].map((item, i) => (
           <li key={i} style={{ marginBottom: '1.5rem', fontSize: '1.2rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
             <span style={{ color: 'var(--color-gold)', fontWeight: 'bold' }}>✓</span> {item}
           </li>
