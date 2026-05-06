@@ -131,4 +131,10 @@
   .testimonial-card {
     flex: 0 0 280px;
   }
+  
+  .carousel-container::before,
+  .carousel-container::after {
+    width: 40px;
+    opacity: 0.7;
+  }
 }
