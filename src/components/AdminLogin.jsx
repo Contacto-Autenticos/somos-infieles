@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { Lock, LogIn, ShieldAlert } from 'lucide-react';
+import { Lock, LogIn, ShieldAlert, Eye, EyeOff } from 'lucide-react';
 import './AdminLogin.css';
 
 const AdminLogin = ({ onLogin }) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState(false);
 
   const handleSubmit = (e) => {
@@ -48,15 +49,24 @@ const AdminLogin = ({ onLogin }) => {
               placeholder="Nombre de usuario"
             />
           </div>
-          <div className="input-group">
+          <div className="input-group password-group">
             <label>Contraseña</label>
-            <input 
-              type="password" 
-              value={password} 
-              onChange={(e) => setPassword(e.target.value)} 
-              required 
-              placeholder="••••••••"
-            />
+            <div className="input-wrapper">
+              <input 
+                type={showPassword ? "text" : "password"} 
+                value={password} 
+                onChange={(e) => setPassword(e.target.value)} 
+                required 
+                placeholder="••••••••"
+              />
+              <button 
+                type="button" 
+                className="toggle-password"
+                onClick={() => setShowPassword(!showPassword)}
+              >
+                {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+              </button>
+            </div>
           </div>
           <button type="submit" className="login-btn">
             INGRESAR <LogIn size={20} />
