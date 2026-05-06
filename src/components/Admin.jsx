@@ -28,6 +28,7 @@ const Admin = () => {
   const [stats, setStats] = useState({ total: 0, revenue: 0, pending: 0 });
   const [dateFrom, setDateFrom] = useState('');
   const [dateTo, setDateTo] = useState('');
+  const [showDropdown, setShowDropdown] = useState(false);
 
   useEffect(() => {
     fetchOrders();
@@ -129,12 +130,20 @@ const Admin = () => {
         <div className="admin-logo">
           <span className="somos">Somos</span> <span className="infieles">Infieles</span>
         </div>
-        <div className="user-profile">
-          <CircleUser size={24} color="var(--color-gold)" />
-          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
-            <span style={{ fontSize: '0.8rem', fontWeight: 600 }}>CEO-admin</span>
-            <button className="logout-btn" onClick={handleLogout}>Cerrar sesión</button>
-          </div>
+        <div className="user-profile" onClick={() => setShowDropdown(!showDropdown)}>
+          <CircleUser size={28} color="var(--color-gold)" />
+          
+          {showDropdown && (
+            <div className="profile-dropdown" onClick={e => e.stopPropagation()}>
+              <div className="dropdown-header">
+                <span className="dropdown-user-name">CEO-admin</span>
+                <span className="dropdown-user-role">Administrador Principal</span>
+              </div>
+              <button className="logout-btn" onClick={handleLogout}>
+                <LogOut size={16} /> Cerrar sesión
+              </button>
+            </div>
+          )}
         </div>
       </nav>
 

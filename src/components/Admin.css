@@ -42,24 +42,73 @@
   gap: 12px;
   color: white;
   cursor: pointer;
-  padding: 6px 12px;
-  border-radius: 8px;
-  transition: background 0.2s;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.2s;
+  position: relative;
 }
 
 .user-profile:hover {
-  background: rgba(255,255,255,0.05);
+  background: rgba(255,255,255,0.1);
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 120%;
+  right: 0;
+  width: 200px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  padding: 1rem;
+  z-index: 1002;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  animation: slideIn 0.2s ease-out;
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dropdown-header {
+  border-bottom: 1px solid #f1f3f5;
+  padding-bottom: 8px;
+  margin-bottom: 4px;
+}
+
+.dropdown-user-name {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #1a1a1a;
+  display: block;
+}
+
+.dropdown-user-role {
+  font-size: 0.75rem;
+  color: #666;
 }
 
 .logout-btn {
   background: none;
   border: none;
   color: #ff4d4d;
-  font-size: 0.85rem;
+  font-size: 0.9rem;
   font-weight: 700;
   cursor: pointer;
-  padding: 0;
-  text-decoration: underline;
+  padding: 8px;
+  text-align: left;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+}
+
+.logout-btn:hover {
+  background-color: #fff5f5;
 }
 
 .admin-header {
