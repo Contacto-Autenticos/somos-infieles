@@ -257,7 +257,7 @@ const CheckoutModal = ({ isOpen, onClose, packageType }) => {
                   </div>
                   <div className="form-row">
                     <div className="form-group">
-                      <label>PISO</label>
+                      <label>TORRE</label>
                       <input 
                         type="text" 
                         name="floor" 
