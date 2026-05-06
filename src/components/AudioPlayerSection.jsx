@@ -92,7 +92,7 @@ const AudioPlayerSection = () => {
               </div>
               
               <p className="audio-context-text">
-                En este crudo fragmento, exploramos ese punto de no retorno donde la rutina te arrebata la autonomía y dejas de ser el protagonista de tu propia vida.
+                En este crudo fragmento, exploramos ese instante donde la propiedad sobre tu propia vida se desvanece y te enfrentas a la realidad de que ya no eres dueño de nada.
               </p>
               
               <div className="audio-player-container">
