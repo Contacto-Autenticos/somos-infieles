@@ -82,7 +82,7 @@
 .hero-video-crop {
   width: 450px;
   max-width: 100%;
-  aspect-ratio: 1023 / 1520;
+  aspect-ratio: 1023 / 1530;
   overflow: hidden;
   border-radius: 20px;
   box-shadow: 0 20px 40px rgba(0,0,0,0.8);
