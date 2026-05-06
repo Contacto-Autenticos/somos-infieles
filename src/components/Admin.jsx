@@ -12,7 +12,9 @@ import {
   Phone,
   MapPin,
   Home,
-  Building
+  Building,
+  LogOut,
+  CircleUser
 } from 'lucide-react';
 import AdminLogin from './AdminLogin';
 import './Admin.css';
@@ -107,6 +109,11 @@ const Admin = () => {
     }
   };
 
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    sessionStorage.removeItem('adminAuth');
+  };
+
   const handleLoginSuccess = () => {
     setIsAuthenticated(true);
     sessionStorage.setItem('adminAuth', 'true');
@@ -118,6 +125,19 @@ const Admin = () => {
 
   return (
     <div className="admin-container">
+      <nav className="admin-navbar">
+        <div className="admin-logo">
+          <span className="somos">Somos</span> <span className="infieles">Infieles</span>
+        </div>
+        <div className="user-profile">
+          <CircleUser size={24} color="var(--color-gold)" />
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start' }}>
+            <span style={{ fontSize: '0.8rem', fontWeight: 600 }}>CEO-admin</span>
+            <button className="logout-btn" onClick={handleLogout}>Cerrar sesión</button>
+          </div>
+        </div>
+      </nav>
+
       <div className="admin-header">
         <div className="admin-title">
           <CreditCard size={32} color="var(--color-gold)" />
