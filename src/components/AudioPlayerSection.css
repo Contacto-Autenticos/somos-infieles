@@ -129,9 +129,25 @@
 }
 
 .audio-title {
-  font-size: 1.3rem;
-  font-weight: 400;
+  font-size: 1.1rem;
+  font-weight: 800;
   color: var(--color-white);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.audio-title span {
+  color: var(--color-gold);
+  font-size: 1.4rem;
+}
+
+.audio-context-text {
+  font-size: 0.95rem;
+  color: var(--color-gray);
+  margin: 0.8rem 0 1.2rem;
+  line-height: 1.5;
+  font-style: italic;
+  opacity: 0.8;
 }
 
 .audio-sample-tag {
