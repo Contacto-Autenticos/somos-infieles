@@ -87,14 +87,14 @@ const AudioPlayerSection = () => {
               </div>
               
               <div className="audio-title-row">
-                <h3 className="audio-title">Capitulo dos - Nos atraen las cosas nuevas</h3>
+                <h3 className="audio-title">Capitulo 3 - La rutina prolongada es un estado de agonía</h3>
                 <span className="audio-sample-tag">MUESTRA</span>
               </div>
               
               <div className="audio-player-container">
                 <audio 
                   ref={audioRef} 
-                  src="/Audiolibro - Clip de muestra.mp3" 
+                  src="/Audiolibro - Clip de muestra - C 3.mp3" 
                   preload="metadata" 
                   onEnded={() => setIsPlaying(false)}
                 />
