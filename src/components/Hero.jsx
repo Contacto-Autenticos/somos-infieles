@@ -26,8 +26,8 @@ const Hero = () => {
             <div className="hero-book-container" style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
               <Book 
                 title="Somos Infieles" 
-                coverImage="/Libro Somos infieles.png"
-                width={{ sm: 120, md: 150, lg: 180, xl: 200 }}
+                coverImage="/SOMOS INFIELES_portada.jpg"
+                width={{ sm: 110, md: 130, lg: 140, xl: 150 }}
                 textured={true}
               />
             </div>
