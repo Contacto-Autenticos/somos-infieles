@@ -81,8 +81,8 @@ const AudioPlayerSection = () => {
               
               <div className="audio-title-row">
                 <div className="audio-info">
-                  <span className="audio-category">Audiolibro Somos infieles</span>
-                  <h3 className="audio-title">Capítulo cuatro: <span>"No eres dueño de nada"</span></h3>
+                  <span className="audio-category">Audiolibro <br className="mobile-br" /> Somos infieles</span>
+                  <h3 className="audio-title">Capítulo cuatro: <span>"No eres dueño <br className="mobile-br" /> de nada"</span></h3>
                 </div>
                 <span className="audio-sample-tag">MUESTRA</span>
               </div>

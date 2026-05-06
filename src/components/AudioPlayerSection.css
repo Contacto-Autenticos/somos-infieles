@@ -240,4 +240,13 @@
     top: 1.2rem;
     right: 1rem;
   }
+  .mobile-br {
+    display: block;
+    content: "";
+    margin-top: 0;
+  }
+}
+
+.mobile-br {
+  display: none;
 }
