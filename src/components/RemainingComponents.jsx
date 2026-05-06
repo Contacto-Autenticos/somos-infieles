@@ -124,7 +124,7 @@ export const Guarantee = () => (
         />
       </div>
       <h2 className="responsive-title" style={{ fontSize: '2.5rem', marginBottom: '1.5rem', color: 'var(--color-black)' }}>
-        Tranquilo, tu compra está <span style={{ color: 'var(--color-gold)' }}>100% protegida.</span>
+        Tranquilo, tu compra está <br /> <span style={{ color: 'var(--color-gold)' }}>100% protegida.</span>
       </h2>
       <p style={{ fontSize: '1.2rem', lineHeight: '1.8', color: '#444' }}>
         Si por cualquier motivo no has recibido el libro en un plazo de 7 días. Podrás solicitar el reembolso completo, sin complicaciones.
