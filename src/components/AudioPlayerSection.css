@@ -240,13 +240,20 @@
     top: 1.2rem;
     right: 1rem;
   }
+.mobile-br {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .audio-info {
+    padding-right: 90px;
+  }
+  .audio-sample-tag {
+    top: 1.2rem;
+    right: 1rem;
+  }
   .mobile-br {
     display: block;
     content: "";
-    margin-top: 0;
   }
-}
-
-.mobile-br {
-  display: none;
 }
