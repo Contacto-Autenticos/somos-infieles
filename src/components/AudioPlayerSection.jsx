@@ -92,7 +92,7 @@ const AudioPlayerSection = () => {
               </div>
               
               <p className="audio-context-text">
-                En este crudo fragmento, exploramos ese instante donde la propiedad sobre tu propia vida se desvanece y te enfrentas a la realidad de que no eres dueño de nada.
+                En este crudo fragmento, exploramos ese instante donde la posibilidad de elegir se desvanece y te enfrentas a la realidad de que no eres dueño de nada.
               </p>
               
               <div className="audio-player-container">
