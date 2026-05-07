@@ -68,7 +68,7 @@ export const AboutBook = () => (
         ¿Qué descubrirás <br /> <span style={{ whiteSpace: 'nowrap' }}>en "<span style={{ color: 'var(--color-gold)' }}>Somos</span> Infieles"?</span>
       </h2>
       <ul style={{ maxWidth: '600px', margin: '0 auto', listStyle: 'none', padding: 0 }}>
-        {["¿Por qué somos infieles?", "La causa del sufrimiento en la infidelidad.", "Los motivos que nos llevan a ser infieles.", "¿Cómo hablar sobre la infidelidad con tu pareja?"].map((item, i) => (
+        {["Por qué somos infieles.", "La causa del sufrimiento en la infidelidad.", "Los motivos que nos llevan a ser infieles.", "Cómo hablar sobre la infidelidad con tu pareja."].map((item, i) => (
           <li key={i} style={{ marginBottom: '1.5rem', fontSize: '1.2rem', display: 'flex', alignItems: 'center', gap: '1rem' }}>
             <span style={{ color: 'var(--color-gold)', fontWeight: 'bold' }}>✓</span> {item}
           </li>
