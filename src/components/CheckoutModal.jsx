@@ -5,7 +5,7 @@ import './CheckoutModal.css';
 
 // Package configuration: maps packageType to title and USD price
 const PACKAGE_CONFIG = {
-  digital: { title: 'Somos Infieles - Digital + Audio', priceUSD: 15 },
+  digital: { title: 'Somos Infieles - Solo Digital (PDF)', priceUSD: 15 },
   physical: { title: 'Somos Infieles - Solo Físico', priceUSD: 20 },
   vip: { title: 'Somos Infieles - Experiencia VIP', priceUSD: 22 }
 };

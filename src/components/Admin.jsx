@@ -133,7 +133,7 @@ const Admin = () => {
 
   const getPackageLabel = (pkg) => {
     switch(pkg) {
-      case 'digital': return 'Digital + Audio';
+      case 'digital': return 'Solo Digital (PDF)';
       case 'physical': return 'Solo Físico';
       case 'vip': return 'Experiencia VIP';
       default: return pkg;
