@@ -33,10 +33,6 @@ const faqs = [
     answer: 'Para envíos nacionales en Colombia, el tiempo estimado es de 3 a 5 días hábiles. Para envíos internacionales, el tiempo puede variar entre 8 y 15 días hábiles dependiendo de la ciudad de destino.'
   },
   {
-    question: '¿Puedo leer el digital en Kindle o en mi celular?',
-    answer: '¡Sí! Al comprar la versión digital, recibirás el libro en formato PDF, compatible con Kindle, iBooks, Google Books y cualquier dispositivo móvil o tablet.'
-  },
-  {
     question: '¿El libro está disponible físico o digital?',
     answer: 'Podrás encontrarlo en versión física, en versión digital y en versión Audiolibro. También puedes optar por "La Experiencia Total" que incluye todos los formatos.'
   },
