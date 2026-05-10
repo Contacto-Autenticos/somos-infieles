@@ -34,7 +34,7 @@ const faqs = [
   },
   {
     question: '¿Puedo leer el digital en Kindle o en mi celular?',
-    answer: '¡Sí! Al comprar la versión digital, recibirás el libro en formatos PDF y EPUB, compatibles con Kindle, iBooks, Google Books y cualquier dispositivo móvil o tablet.'
+    answer: '¡Sí! Al comprar la versión digital, recibirás el libro en formato PDF, compatible con Kindle, iBooks, Google Books y cualquier dispositivo móvil o tablet.'
   },
   {
     question: '¿El libro está disponible físico o digital?',

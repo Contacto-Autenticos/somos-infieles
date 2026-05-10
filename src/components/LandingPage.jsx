@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Hero from './Hero';
 import EmotionalHook from './EmotionalHook';
 import Problem from './Problem';
-import { Transformation, AboutBook, Author, Guarantee, Footer } from './RemainingComponents';
+import { Transformation, AboutBook, Author, AuthorInterview, Guarantee, Footer } from './RemainingComponents';
 import AudioPlayerSection from './AudioPlayerSection';
 import Testimonials from './Testimonials';
 import Pricing from './Pricing';
@@ -11,6 +11,7 @@ import FAQ from './FAQ';
 import WhatsAppButton from './WhatsAppButton';
 import StickyMobileCTA from './StickyMobileCTA';
 import PaymentStatus from './PaymentStatus';
+import PurchaseNotifications from './PurchaseNotifications';
 
 const LandingPage = () => {
   const [paymentStatus, setPaymentStatus] = useState(null); // null, 'approved', 'failure', 'pending'
@@ -38,6 +39,7 @@ const LandingPage = () => {
 
   return (
     <div className="app-container">
+      <PurchaseNotifications />
       <Hero />
       <EmotionalHook />
       <Problem />
@@ -46,6 +48,7 @@ const LandingPage = () => {
       <Transformation />
       <Author />
       <Testimonials />
+      <AuthorInterview />
       <Pricing />
       <HowItWorks />
       <Guarantee />

@@ -55,8 +55,8 @@ const Pricing = () => {
           
           {/* Plan Básico */}
           <div className="pricing-card basic">
-            <h3 className="plan-name">Digital + Audio</h3>
-            <p className="plan-desc">Para los que aprenden escuchando y leyendo en pantalla.</p>
+            <h3 className="plan-name">Solo Digital</h3>
+            <p className="plan-desc">Acceso inmediato a la verdad desde cualquier dispositivo.</p>
             <div className="plan-price-container">
               <span className="original-price">$29 USD</span>
               <div className="plan-price">
@@ -68,7 +68,7 @@ const Pricing = () => {
             
             <ul className="plan-features">
               <li><CheckIcon /> Libro Digital (PDF)</li>
-              <li><CheckIcon /> Audiolibro Completo</li>
+              <li className="disabled"><CrossIcon /> Audiolibro Completo</li>
               <li className="disabled"><CrossIcon /> Libro Físico (Tapa Blanda)</li>
               <li className="disabled"><CrossIcon /> Envío a Domicilio</li>
             </ul>
@@ -80,7 +80,7 @@ const Pricing = () => {
             />
           </div>
 
-          {/* Plan Señuelo (Físico) */}
+          {/* Plan Estándar (Físico) */}
           <div className="pricing-card standard">
             <h3 className="plan-name">Solo Físico</h3>
             <p className="plan-desc">Para los puristas del papel que aman el olor a libro nuevo.</p>
@@ -111,9 +111,9 @@ const Pricing = () => {
           {/* Plan VIP (Best Seller) */}
           <div className="pricing-card vip">
             <div className="popular-badge">LA EXPERIENCIA TOTAL</div>
-            <h3 className="plan-name text-gold">La Experiencia VIP</h3>
+            <h3 className="plan-name text-gold">Experiencia VIP</h3>
             <p className="plan-desc" style={{ color: 'var(--color-darker)' }}>
-              Llévate todo. Lee en casa, escucha en el auto y ten tu copia digital.
+              La colección completa para una transformación profunda y discreta.
             </p>
             <div className="last-units-badge">¡SOLO QUEDAN 14 COPIAS FÍSICAS!</div>
             <div className="plan-price-container">
@@ -127,13 +127,16 @@ const Pricing = () => {
             
             <ul className="plan-features">
               <li><CheckIcon /> Libro Digital (PDF)</li>
-              <li><CheckIcon /> Audiolibro Completo</li>
               <li><CheckIcon /> Libro Físico (Tapa Blanda)</li>
               <li><CheckIcon /> Envío a Domicilio*</li>
+              <li className="bonus-feature">
+                <CheckIcon color="#059669" /> 
+                <span style={{ color: '#059669', fontWeight: 'bold' }}>BONUS: Audiolibro Completo</span>
+              </li>
             </ul>
             
             <CTAButton 
-              text="Quiero Todo Ahora" 
+              text="Quiero Todo + Bonus" 
               className="pricing-cta" 
               darkNote={true} 
               onClick={() => openModal('vip')}

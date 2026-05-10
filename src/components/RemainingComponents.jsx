@@ -125,6 +125,42 @@ export const Author = () => (
   </section>
 );
 
+export const AuthorInterview = () => (
+  <section className="section-padding" style={{ backgroundColor: '#fcfcfc', borderTop: '1px solid #eee' }}>
+    <div className="container">
+      <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
+        <h2 className="responsive-title" style={{ color: 'var(--color-dark)', marginBottom: '1rem' }}>
+          Entrevista <span style={{ color: 'var(--color-gold)' }}>Exclusiva</span>
+        </h2>
+        <p style={{ color: 'rgba(0,0,0,0.7)', fontSize: '1.2rem', maxWidth: '700px', margin: '0 auto' }}>
+          Conoce más sobre la visión de Felipe Beltrán y el propósito detrás de "Somos Infieles" en esta conversación profunda.
+        </p>
+      </div>
+      
+      <div className="video-wrapper" style={{ 
+        maxWidth: '700px', 
+        margin: '0 auto', 
+        borderRadius: '24px', 
+        overflow: 'hidden', 
+        boxShadow: '0 20px 50px rgba(0,0,0,0.15)', 
+        border: '1px solid rgba(0,0,0,0.05)',
+        background: '#000'
+      }}>
+        <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
+          <iframe
+            style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+            src="https://www.youtube.com/embed/-PuovpRPjcg?start=155"
+            title="Entrevista Felipe Beltrán - Somos Infieles"
+            frameBorder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
 export const Guarantee = () => (
   <section className="section-padding" style={{ backgroundColor: 'var(--color-white)', color: 'var(--color-black)', textAlign: 'center' }}>
     <div className="container" style={{ maxWidth: '800px' }}>

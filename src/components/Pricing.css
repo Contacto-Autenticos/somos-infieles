@@ -291,3 +291,13 @@
   50% { transform: scale(1.05); }
   100% { transform: scale(1); }
 }
+
+.plan-features li.bonus-feature {
+  margin-top: 0.5rem;
+  padding: 0.8rem;
+  background-color: rgba(5, 150, 105, 0.08);
+  border-radius: 8px;
+  border: 1px dashed rgba(5, 150, 105, 0.3);
+}
+
+
