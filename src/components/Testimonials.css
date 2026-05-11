@@ -55,17 +55,8 @@
   display: flex;
   gap: 2rem;
   width: max-content;
-  animation: scrollMarquee 45s linear infinite;
   padding: 1rem 0;
-}
-
-.carousel-track:hover {
-  animation-play-state: paused;
-}
-@keyframes scrollMarquee {
-  0% { transform: translateX(0); }
-  /* Total shift for 12 items = (width + gap) * 12 = (350px + 2rem) * 12 */
-  100% { transform: translateX(calc(-350px * 12 - 2rem * 12)); }
+  will-change: transform;
 }
 
 .testimonial-card {
@@ -132,7 +123,8 @@
     font-size: 2.2rem;
   }
   .testimonial-card {
-    flex: 0 0 280px;
+    width: 280px;
+    height: 380px;
   }
   
   .carousel-container::before,
@@ -140,4 +132,50 @@
     width: 40px;
     opacity: 0.7;
   }
+}
+
+.carousel-controls {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.control-btn {
+  background: white;
+  border: 1px solid #ddd;
+  color: #333;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.control-btn:hover {
+  background: var(--color-gold);
+  border-color: var(--color-gold);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(220, 190, 60, 0.3);
+}
+
+.control-btn:active {
+  transform: translateY(0);
+}
+
+.play-pause-btn {
+  width: 60px;
+  height: 60px;
+  background: white;
+  border-color: #eee;
+}
+
+.play-pause-btn svg {
+  fill: currentColor;
 }

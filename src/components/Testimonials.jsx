@@ -1,4 +1,5 @@
-import React from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { Play, Pause, ChevronLeft, ChevronRight } from 'lucide-react';
 import './Testimonials.css';
 
 const Star = ({ size = 18 }) => (
@@ -15,6 +16,11 @@ const Quote = () => (
 );
 
 const Testimonials = () => {
+  const [isPlaying, setIsPlaying] = useState(true);
+  const trackRef = useRef(null);
+  const offsetRef = useRef(0);
+  const requestRef = useRef();
+  const lastTimeRef = useRef();
   const items = [
     {
       type: 'text',
@@ -113,6 +119,73 @@ const Testimonials = () => {
     }
   ];
 
+  const scroll = (time) => {
+    if (lastTimeRef.current !== undefined && isPlaying) {
+      const deltaTime = time - lastTimeRef.current;
+      const speed = 0.05; // Ajustar velocidad aquí (píxeles por ms)
+      offsetRef.current -= speed * deltaTime;
+
+      // Calcular el ancho de un set de items
+      const cardWidth = window.innerWidth <= 768 ? 280 : 350;
+      const gap = 32; // 2rem
+      const totalWidth = (cardWidth + gap) * items.length;
+
+      if (Math.abs(offsetRef.current) >= totalWidth) {
+        offsetRef.current += totalWidth;
+      }
+
+      if (trackRef.current) {
+        trackRef.current.style.transform = `translateX(${offsetRef.current}px)`;
+      }
+    }
+    lastTimeRef.current = time;
+    requestRef.current = requestAnimationFrame(scroll);
+  };
+
+  useEffect(() => {
+    requestRef.current = requestAnimationFrame(scroll);
+    return () => cancelAnimationFrame(requestRef.current);
+  }, [isPlaying]);
+
+  const togglePlay = () => setIsPlaying(!isPlaying);
+
+  const handleManualNav = (direction) => {
+    setIsPlaying(false);
+    const cardWidth = window.innerWidth <= 768 ? 280 : 350;
+    const gap = 32;
+    const step = cardWidth + gap;
+    
+    // Alinear al comentario más cercano
+    const currentItem = Math.round(Math.abs(offsetRef.current) / step);
+    let nextItem = direction === 'next' ? currentItem + 1 : currentItem - 1;
+    
+    // Evitar saltos bruscos en los límites del loop infinito
+    let nextOffset = -nextItem * step;
+    
+    // Si llegamos al final del clon, reseteamos posición sin que se note
+    const totalWidth = step * items.length;
+    
+    if (trackRef.current) {
+      trackRef.current.style.transition = 'transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1)';
+      offsetRef.current = nextOffset;
+      trackRef.current.style.transform = `translateX(${nextOffset}px)`;
+      
+      setTimeout(() => {
+        if (trackRef.current) {
+          trackRef.current.style.transition = 'none';
+          // Si nos pasamos del rango original, ajustamos silenciosamente
+          if (Math.abs(offsetRef.current) >= totalWidth) {
+            offsetRef.current += totalWidth;
+            trackRef.current.style.transform = `translateX(${offsetRef.current}px)`;
+          } else if (offsetRef.current > 0) {
+            offsetRef.current -= totalWidth;
+            trackRef.current.style.transform = `translateX(${offsetRef.current}px)`;
+          }
+        }
+      }, 600);
+    }
+  };
+
   return (
     <section className="testimonials-section section-padding">
       <div className="container">
@@ -124,8 +197,13 @@ const Testimonials = () => {
         </p>
 
         <div className="carousel-container">
-          <div className="carousel-track">
-            {[...items, ...items].map((item, index) => (
+          <div 
+            className="carousel-track" 
+            ref={trackRef}
+            onMouseEnter={() => setIsPlaying(false)}
+            onMouseLeave={() => setIsPlaying(true)}
+          >
+            {[...items, ...items, ...items].map((item, index) => (
               <div key={index} className={`testimonial-card ${item.type === 'image' ? 'card-image' : ''}`}>
                 {item.type === 'text' ? (
                   <>
@@ -145,6 +223,32 @@ const Testimonials = () => {
               </div>
             ))}
           </div>
+        </div>
+
+        <div className="carousel-controls">
+          <button 
+            className="control-btn" 
+            onClick={() => handleManualNav('prev')}
+            aria-label="Anterior"
+          >
+            <ChevronLeft size={24} />
+          </button>
+          
+          <button 
+            className="control-btn play-pause-btn" 
+            onClick={togglePlay}
+            aria-label={isPlaying ? 'Pausar' : 'Reproducir'}
+          >
+            {isPlaying ? <Pause size={24} /> : <Play size={24} />}
+          </button>
+          
+          <button 
+            className="control-btn" 
+            onClick={() => handleManualNav('next')}
+            aria-label="Siguiente"
+          >
+            <ChevronRight size={24} />
+          </button>
         </div>
       </div>
     </section>
