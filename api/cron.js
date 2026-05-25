@@ -9,11 +9,17 @@ export default async function handler(req, res) {
   try {
     // Hacemos una petición simple a la REST API de Supabase para generar actividad.
     // Esto previene que el proyecto de Free Tier se pause por inactividad.
-    const response = await fetch(`${supabaseUrl}/auth/v1/health`, {
-      method: 'GET'
+    const response = await fetch(`${supabaseUrl}/rest/v1/?limit=1`, {
+      method: 'GET',
+      headers: {
+        'apikey': supabaseKey,
+        'Authorization': `Bearer ${supabaseKey}`
+      }
     });
 
-    if (!response.ok) {
+    // 200 OK y 401 Unauthorized son pruebas de que el ping llegó a Supabase
+    // (el 401 pasa porque la key anónima no puede listar todas las tablas, pero cuenta como actividad).
+    if (!response.ok && response.status !== 401) {
       throw new Error(`Supabase respondió con estado: ${response.status}`);
     }
 
