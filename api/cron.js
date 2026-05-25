@@ -9,12 +9,8 @@ export default async function handler(req, res) {
   try {
     // Hacemos una petición simple a la REST API de Supabase para generar actividad.
     // Esto previene que el proyecto de Free Tier se pause por inactividad.
-    const response = await fetch(`${supabaseUrl}/rest/v1/?limit=1`, {
-      method: 'GET',
-      headers: {
-        'apikey': supabaseKey,
-        'Authorization': `Bearer ${supabaseKey}`
-      }
+    const response = await fetch(`${supabaseUrl}/auth/v1/health`, {
+      method: 'GET'
     });
 
     if (!response.ok) {
