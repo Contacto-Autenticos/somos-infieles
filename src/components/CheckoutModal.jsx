@@ -114,7 +114,16 @@ const CheckoutModal = ({ isOpen, onClose, packageType }) => {
 
       if (dbError) {
         console.error('Error guardando comprador:', dbError);
-        // Continue to payment even if DB save fails
+      } else {
+        // Enviar notificación Push en segundo plano
+        fetch('/api/notify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            title: '¡Nueva Venta!',
+            message: `${formData.fullName} está comprando el paquete ${pkg.title} por $${pkg.priceUSD} USD.`
+          })
+        }).catch(err => console.error('Error enviando notificación:', err));
       }
 
       // 5. Redirect to Mercado Pago checkout

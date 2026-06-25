@@ -25,6 +25,16 @@ const LandingPage = () => {
     
     if (status && ['approved', 'failure', 'pending'].includes(status)) {
       setPaymentStatus(status);
+      if (status === 'approved') {
+        fetch('/api/notify', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            title: '¡Pago Aprobado! 💰',
+            message: 'Un comprador ha finalizado exitosamente su pago en Mercado Pago.'
+          })
+        }).catch(err => console.error('Error enviando notificación:', err));
+      }
     }
   }, []);
 

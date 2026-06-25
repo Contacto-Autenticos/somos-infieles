@@ -29,6 +29,9 @@ export default defineConfig({
             type: 'image/jpeg'
           }
         ]
+      },
+      workbox: {
+        importScripts: ['custom-sw.js']
       }
     })
   ],

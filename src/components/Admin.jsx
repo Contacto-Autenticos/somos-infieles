@@ -16,7 +16,8 @@ import {
   Building,
   LogOut,
   CircleUser,
-  Smartphone
+  Smartphone,
+  BellRing
 } from 'lucide-react';
 import AdminLogin from './AdminLogin';
 import './Admin.css';
@@ -181,6 +182,61 @@ const Admin = () => {
     navigate('/');
   };
 
+  const urlBase64ToUint8Array = (base64String) => {
+    const padding = '='.repeat((4 - base64String.length % 4) % 4);
+    const base64 = (base64String + padding)
+      .replace(/\-/g, '+')
+      .replace(/_/g, '/');
+    const rawData = window.atob(base64);
+    const outputArray = new Uint8Array(rawData.length);
+    for (let i = 0; i < rawData.length; ++i) {
+      outputArray[i] = rawData.charCodeAt(i);
+    }
+    return outputArray;
+  };
+
+  const handleEnablePush = async () => {
+    if (!('serviceWorker' in navigator) || !('PushManager' in window)) {
+      alert('Tu navegador no soporta notificaciones push.');
+      return;
+    }
+  
+    try {
+      const permission = await Notification.requestPermission();
+      if (permission !== 'granted') {
+        alert('Permiso de notificaciones denegado.');
+        return;
+      }
+  
+      const registration = await navigator.serviceWorker.ready;
+      let subscription = await registration.pushManager.getSubscription();
+      
+      if (!subscription) {
+        const VAPID_PUBLIC_KEY = 'BI14YFPZRs_QS2ElH4Jkf7zcXgYbtSc4f6lmTIx7Dpcq9oZqWIrXKxnbWQ8nSjHzvrXk1mCny0Ghu054a3lFQ24';
+        const convertedVapidKey = urlBase64ToUint8Array(VAPID_PUBLIC_KEY);
+        subscription = await registration.pushManager.subscribe({
+          userVisibleOnly: true,
+          applicationServerKey: convertedVapidKey
+        });
+      }
+  
+      const subJSON = subscription.toJSON();
+      const { error } = await supabase
+        .from('admin_push_subscriptions')
+        .upsert({
+          endpoint: subJSON.endpoint,
+          keys_p256dh: subJSON.keys.p256dh,
+          keys_auth: subJSON.keys.auth
+        }, { onConflict: 'endpoint' });
+  
+      if (error) throw error;
+      alert('¡Notificaciones activadas exitosamente!');
+    } catch (error) {
+      console.error('Error al suscribirse a push:', error);
+      alert('Hubo un error al activar las notificaciones.');
+    }
+  };
+
   if (!isAuthenticated) {
     return <AdminLogin onLogin={handleLoginSuccess} />;
   }
@@ -221,6 +277,10 @@ const Admin = () => {
                   <span className="dropdown-user-role">Administrador Principal</span>
                 </div>
                 
+                <button className="logout-btn" style={{ color: '#1a1a1a', borderBottom: '1px solid #f1f3f5', borderRadius: '0', paddingBottom: '12px', marginBottom: '4px' }} onClick={handleEnablePush}>
+                  <BellRing size={16} /> Activar Notificaciones
+                </button>
+
                 {!isStandalone && (
                   <button className="logout-btn" style={{ color: '#1a1a1a', borderBottom: '1px solid #f1f3f5', borderRadius: '0', paddingBottom: '12px', marginBottom: '4px' }} onClick={handleInstallApp}>
                     <Smartphone size={16} /> Instalar App
