@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Hero from './Hero';
 import EmotionalHook from './EmotionalHook';
 import Problem from './Problem';
@@ -15,6 +16,7 @@ import PurchaseNotifications from './PurchaseNotifications';
 
 const LandingPage = () => {
   const [paymentStatus, setPaymentStatus] = useState(null); // null, 'approved', 'failure', 'pending'
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Check if returning from Mercado Pago
@@ -56,6 +58,22 @@ const LandingPage = () => {
       <Footer />
       <StickyMobileCTA />
       <WhatsAppButton />
+      
+      {/* Botón oculto para ir a /admin */}
+      <div 
+        onClick={() => navigate('/admin')}
+        style={{
+          position: 'fixed',
+          bottom: 0,
+          left: 0,
+          width: '50px',
+          height: '50px',
+          cursor: 'pointer',
+          zIndex: 9999,
+          opacity: 0
+        }}
+        title="Admin"
+      />
     </div>
   );
 };

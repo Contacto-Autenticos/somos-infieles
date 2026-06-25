@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { supabase } from '../supabaseClient';
 import { 
   CreditCard, 
@@ -14,12 +15,14 @@ import {
   Home,
   Building,
   LogOut,
-  CircleUser
+  CircleUser,
+  Smartphone
 } from 'lucide-react';
 import AdminLogin from './AdminLogin';
 import './Admin.css';
 
 const Admin = () => {
+  const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(
     sessionStorage.getItem('adminAuth') === 'true'
   );
@@ -150,6 +153,23 @@ const Admin = () => {
     sessionStorage.setItem('adminAuth', 'true');
   };
 
+  const handleInstallApp = async () => {
+    if (window.deferredPrompt) {
+      window.deferredPrompt.prompt();
+      const { outcome } = await window.deferredPrompt.userChoice;
+      if (outcome === 'accepted') {
+        console.log('Usuario aceptó instalar la app');
+      }
+      window.deferredPrompt = null;
+    } else {
+      alert("La aplicación ya está instalada o tu navegador no soporta esta función.");
+    }
+  };
+
+  const handleGoHome = () => {
+    navigate('/');
+  };
+
   if (!isAuthenticated) {
     return <AdminLogin onLogin={handleLoginSuccess} />;
   }
@@ -160,20 +180,45 @@ const Admin = () => {
         <div className="admin-logo">
           <span className="somos">Somos</span> <span className="infieles">Infieles</span>
         </div>
-        <div className="user-profile" onClick={() => setShowDropdown(!showDropdown)}>
-          <CircleUser size={28} color="var(--color-gold)" />
+        
+        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+          <button 
+            onClick={handleGoHome}
+            style={{ 
+              display: 'flex', alignItems: 'center', gap: '8px', padding: '0.5rem 1rem', 
+              background: 'transparent', border: '1px solid var(--color-gold)', 
+              color: 'var(--color-gold)', borderRadius: '4px', cursor: 'pointer' 
+            }}
+          >
+            <Home size={18} /> Ir a Inicio
+          </button>
           
-          {showDropdown && (
-            <div className="profile-dropdown" onClick={e => e.stopPropagation()}>
-              <div className="dropdown-header">
-                <span className="dropdown-user-name">CEO-admin</span>
-                <span className="dropdown-user-role">Administrador Principal</span>
+          <button 
+            onClick={handleInstallApp}
+            style={{ 
+              display: 'flex', alignItems: 'center', gap: '8px', padding: '0.5rem 1rem', 
+              background: 'var(--color-gold)', border: 'none', color: '#000', 
+              borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' 
+            }}
+          >
+            <Smartphone size={18} /> Instalar App
+          </button>
+
+          <div className="user-profile" onClick={() => setShowDropdown(!showDropdown)}>
+            <CircleUser size={28} color="var(--color-gold)" />
+            
+            {showDropdown && (
+              <div className="profile-dropdown" onClick={e => e.stopPropagation()}>
+                <div className="dropdown-header">
+                  <span className="dropdown-user-name">CEO-admin</span>
+                  <span className="dropdown-user-role">Administrador Principal</span>
+                </div>
+                <button className="logout-btn" onClick={handleLogout}>
+                  <LogOut size={16} /> Cerrar sesión
+                </button>
               </div>
-              <button className="logout-btn" onClick={handleLogout}>
-                <LogOut size={16} /> Cerrar sesión
-              </button>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </nav>
 
