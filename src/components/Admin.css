@@ -361,43 +361,295 @@
   font-size: 0.85rem;
 }
 
+/* Mobile specific components (hidden on desktop) */
+.mobile-bottom-nav {
+  display: none;
+}
+
+.mobile-cards-container {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .admin-container {
-    padding: 80px 1rem 1rem;
+    padding: 70px 1rem 80px 1rem;
+    background-color: #fafbfc;
   }
   
   .admin-navbar {
     padding: 0 1rem;
+    height: 60px;
   }
   
   .admin-logo {
     font-size: 1.1rem;
   }
   
-  .navbar-actions {
-    gap: 0.5rem;
+  /* Hide desktop elements */
+  .navbar-desktop-actions {
+    display: none !important;
   }
   
-  .btn-nav {
-    padding: 0.4rem 0.6rem;
-    font-size: 0.8rem;
+  .table-container {
+    display: none !important;
+  }
+
+  /* Show mobile elements */
+  .mobile-bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    border-top: 1px solid #eaeaea;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+    z-index: 1000;
+    justify-content: space-around;
+    padding: 0.8rem 0 calc(0.8rem + env(safe-area-inset-bottom)) 0;
+  }
+
+  .nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     gap: 4px;
+    font-size: 0.7rem;
+    color: #888;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .nav-item.active {
+    color: var(--color-gold);
+  }
+
+  /* Profile Menu on Mobile */
+  .profile-dropdown {
+    position: fixed;
+    bottom: 80px;
+    right: 1rem;
+    left: 1rem;
+    width: auto;
+    top: auto;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    padding: 1rem;
+    z-index: 1002;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: slideUp 0.2s ease-out;
   }
   
-  .btn-nav-home span,
-  .btn-nav-install span {
-    display: none;
+  @keyframes slideUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
   }
-  
+
+  /* Admin Header & Filters Redesign */
   .admin-header {
     flex-direction: column;
     align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
   }
-  
+
+  .admin-title {
+    font-size: 1.4rem;
+  }
+
   .admin-filters {
     width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.8rem;
+    padding: 1.2rem;
+  }
+
+  .filter-group {
+    border: 1px solid #eee;
+    border-radius: 8px;
+    padding: 0.6rem 0.8rem;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .filter-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-direction: row-reverse;
+    font-size: 0.9rem;
+    color: #666;
+    width: 100%;
+    position: relative;
+  }
+
+  .filter-group input {
+    position: absolute;
+    right: 0;
+    top: 0;
+    border: none;
+    background: transparent;
+    padding: 0;
+    width: auto;
+    font-size: 0.9rem;
+    color: #333;
+    outline: none;
+  }
+
+  .filters-actions-mobile {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+  }
+
+  .filters-actions-mobile .btn-apply {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .filters-actions-mobile .btn-refresh {
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 6px;
+    padding: 0 1.2rem;
+    color: var(--color-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Horizontal Stats */
+  .admin-stats {
+    display: flex;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    scroll-snap-type: x mandatory;
+    margin-right: -1rem;
+    padding-right: 1rem;
+  }
+  
+  .admin-stats::-webkit-scrollbar {
+    display: none;
+  }
+
+  .stat-card {
+    min-width: 200px;
+    scroll-snap-align: start;
+    flex-shrink: 0;
+  }
+
+  /* Mobile Order Cards */
+  .mobile-cards-container {
+    display: flex;
     flex-direction: column;
-    align-items: stretch;
+    gap: 1rem;
+  }
+
+  .mobile-order-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.2rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    border: 1px solid #f5f5f5;
+  }
+
+  .card-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .card-date {
+    font-size: 0.75rem;
+    color: #888;
+  }
+
+  .card-price-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #f1f3f5;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .card-price-col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card-price {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #1a1a1a;
+  }
+
+  .card-price-cop {
+    font-size: 0.7rem;
+    color: #888;
+  }
+
+  .card-package {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .card-user-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .card-info-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.85rem;
+    color: #444;
+  }
+
+  .card-contact-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .card-dispatch-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid #f1f3f5;
+    padding-top: 1rem;
+  }
+
+  .dispatch-check-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.85rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+  }
+
+  .dispatch-check-wrapper input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-gold);
   }
 }
 .tracking-input {

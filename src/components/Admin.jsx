@@ -192,22 +192,23 @@ const Admin = () => {
           <span className="somos">Somos</span> <span className="infieles">Infieles</span>
         </div>
         
-        <div className="navbar-actions">
-          <button 
-            className="btn-nav btn-nav-home"
-            onClick={handleGoHome}
-          >
-            <Home size={18} /> <span>Ir a Inicio</span>
-          </button>
-          
-          {!isStandalone && (
+          <div className="navbar-desktop-actions" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <button 
-              className="btn-nav btn-nav-install"
-              onClick={handleInstallApp}
+              className="btn-nav btn-nav-home desktop-only"
+              onClick={handleGoHome}
             >
-              <Smartphone size={18} /> <span>Instalar App</span>
+              <Home size={18} /> <span>Ir a Inicio</span>
             </button>
-          )}
+            
+            {!isStandalone && (
+              <button 
+                className="btn-nav btn-nav-install desktop-only"
+                onClick={handleInstallApp}
+              >
+                <Smartphone size={18} /> <span>Instalar App</span>
+              </button>
+            )}
+          </div>
 
           <div className="user-profile" onClick={() => setShowDropdown(!showDropdown)}>
             <CircleUser size={28} color="var(--color-gold)" />
@@ -218,6 +219,13 @@ const Admin = () => {
                   <span className="dropdown-user-name">CEO-admin</span>
                   <span className="dropdown-user-role">Administrador Principal</span>
                 </div>
+                
+                {!isStandalone && (
+                  <button className="logout-btn" style={{ color: '#1a1a1a', borderBottom: '1px solid #f1f3f5', borderRadius: '0', paddingBottom: '12px', marginBottom: '4px' }} onClick={handleInstallApp}>
+                    <Smartphone size={16} /> Instalar App
+                  </button>
+                )}
+
                 <button className="logout-btn" onClick={handleLogout}>
                   <LogOut size={16} /> Cerrar sesión
                 </button>
@@ -250,12 +258,14 @@ const Admin = () => {
               onChange={(e) => setDateTo(e.target.value)} 
             />
           </div>
-          <button className="btn-apply" onClick={fetchOrders}>
-            <Filter size={18} /> Aplicar
-          </button>
-          <button className="btn-refresh" onClick={fetchOrders} title="Actualizar">
-            <RefreshCcw size={20} className={loading ? 'spinner' : ''} />
-          </button>
+          <div className="filters-actions-mobile">
+            <button className="btn-apply" onClick={fetchOrders}>
+              <Filter size={18} /> Aplicar
+            </button>
+            <button className="btn-refresh" onClick={fetchOrders} title="Actualizar">
+              <RefreshCcw size={20} className={loading ? 'spinner' : ''} />
+            </button>
+          </div>
         </div>
       </div>
 
@@ -400,6 +410,111 @@ const Admin = () => {
             </tbody>
           </table>
         )}
+      </div>
+
+      {/* Mobile Cards Container */}
+      <div className="mobile-cards-container">
+        {loading ? (
+          <div style={{ padding: '4rem', textAlign: 'center' }}>Cargando datos...</div>
+        ) : orders.length === 0 ? (
+          <div style={{ textAlign: 'center', padding: '3rem', background: 'white', borderRadius: '12px' }}>No hay transacciones registradas</div>
+        ) : (
+          orders.map((order) => (
+            <div className="mobile-order-card" key={order.id}>
+              <div className="card-header-row">
+                <span className={`status-badge ${order.estado_pago || 'pendiente'}`}>
+                  {order.estado_pago || 'pendiente'}
+                </span>
+                <span className="card-date">{formatDate(order.created_at)}</span>
+              </div>
+              
+              <div className="card-price-row">
+                <div className="card-price-col">
+                  <span className="card-price">${order.precio_usd} USD</span>
+                  <span className="card-price-cop">~ ${order.precio_cop?.toLocaleString()} COP</span>
+                </div>
+                <span className="card-package">{getPackageLabel(order.paquete)}</span>
+              </div>
+
+              <div className="card-user-info">
+                <div className="card-info-item" style={{ fontWeight: 600 }}>
+                  <User size={16} /> {order.nombre}
+                </div>
+                <div className="card-contact-row">
+                  <div className="card-info-item">
+                    <Mail size={14} /> {order.email}
+                  </div>
+                  <div className="card-info-item">
+                    <Phone size={14} /> {order.telefono}
+                  </div>
+                </div>
+                <div className="card-info-item" style={{ alignItems: 'flex-start' }}>
+                  <MapPin size={16} style={{ marginTop: '2px' }} /> 
+                  <div>
+                    {order.ciudad || 'N/A'} • 
+                    {order.paquete === 'digital' ? (
+                      ' Digital'
+                    ) : order.tipo_vivienda === 'casa' ? (
+                      <> <Home size={14} style={{ margin: '0 4px' }} /> Casa </>
+                    ) : (
+                      <> <Building size={14} style={{ margin: '0 4px' }} /> {order.nombre_unidad || 'Unidad'} </>
+                    )}
+                  </div>
+                </div>
+                {order.paquete !== 'digital' && order.tipo_vivienda === 'unidad' && (
+                  <div className="card-info-item" style={{ marginLeft: '26px', fontSize: '0.8rem', color: '#888' }}>
+                    T: {order.piso} | Apto: {order.apartamento}
+                  </div>
+                )}
+              </div>
+
+              <div className="card-dispatch-row">
+                {order.paquete === 'digital' ? (
+                  <span style={{ color: '#aaa', fontSize: '0.85rem' }}>N/A</span>
+                ) : (
+                  <>
+                    <label className="dispatch-check-wrapper">
+                      <input 
+                        type="checkbox" 
+                        checked={order.despachado || false} 
+                        onChange={() => handleToggleDespacho(order.id, order.despachado)}
+                      />
+                      DESPACHO
+                    </label>
+                    <input 
+                      type="text"
+                      className="tracking-input"
+                      placeholder="Ej: 123456"
+                      value={order.numero_guia || ''}
+                      disabled={order.despachado}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        setOrders(prev => prev.map(o => o.id === order.id ? { ...o, numero_guia: val } : o));
+                      }}
+                      onBlur={(e) => handleUpdateGuia(order.id, e.target.value)}
+                    />
+                  </>
+                )}
+              </div>
+            </div>
+          ))
+        )}
+      </div>
+
+      {/* Mobile Bottom Navigation */}
+      <div className="mobile-bottom-nav">
+        <button className="nav-item" onClick={handleGoHome}>
+          <Home size={22} />
+          <span>Inicio</span>
+        </button>
+        <button className="nav-item active">
+          <CreditCard size={22} />
+          <span>Transacciones</span>
+        </button>
+        <button className="nav-item" onClick={() => setShowDropdown(!showDropdown)}>
+          <CircleUser size={22} />
+          <span>Cuenta</span>
+        </button>
       </div>
     </div>
   );
