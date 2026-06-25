@@ -192,6 +192,7 @@ const Admin = () => {
           <span className="somos">Somos</span> <span className="infieles">Infieles</span>
         </div>
         
+        <div className="navbar-actions">
           <div className="navbar-desktop-actions" style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
             <button 
               className="btn-nav btn-nav-home desktop-only"
