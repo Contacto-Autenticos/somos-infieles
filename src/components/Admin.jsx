@@ -38,9 +38,20 @@ const Admin = () => {
   const [dateFrom, setDateFrom] = useState('');
   const [dateTo, setDateTo] = useState('');
   const [showDropdown, setShowDropdown] = useState(false);
+  const [isStandalone, setIsStandalone] = useState(false);
 
   useEffect(() => {
     fetchOrders();
+    
+    const checkStandalone = () => {
+      const isStandaloneMode = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone;
+      setIsStandalone(!!isStandaloneMode);
+    };
+    checkStandalone();
+    
+    const mediaQuery = window.matchMedia('(display-mode: standalone)');
+    mediaQuery.addEventListener('change', checkStandalone);
+    return () => mediaQuery.removeEventListener('change', checkStandalone);
   }, []);
 
   const fetchOrders = async () => {
@@ -181,28 +192,22 @@ const Admin = () => {
           <span className="somos">Somos</span> <span className="infieles">Infieles</span>
         </div>
         
-        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+        <div className="navbar-actions">
           <button 
+            className="btn-nav btn-nav-home"
             onClick={handleGoHome}
-            style={{ 
-              display: 'flex', alignItems: 'center', gap: '8px', padding: '0.5rem 1rem', 
-              background: 'transparent', border: '1px solid var(--color-gold)', 
-              color: 'var(--color-gold)', borderRadius: '4px', cursor: 'pointer' 
-            }}
           >
-            <Home size={18} /> Ir a Inicio
+            <Home size={18} /> <span>Ir a Inicio</span>
           </button>
           
-          <button 
-            onClick={handleInstallApp}
-            style={{ 
-              display: 'flex', alignItems: 'center', gap: '8px', padding: '0.5rem 1rem', 
-              background: 'var(--color-gold)', border: 'none', color: '#000', 
-              borderRadius: '4px', cursor: 'pointer', fontWeight: 'bold' 
-            }}
-          >
-            <Smartphone size={18} /> Instalar App
-          </button>
+          {!isStandalone && (
+            <button 
+              className="btn-nav btn-nav-install"
+              onClick={handleInstallApp}
+            >
+              <Smartphone size={18} /> <span>Instalar App</span>
+            </button>
+          )}
 
           <div className="user-profile" onClick={() => setShowDropdown(!showDropdown)}>
             <CircleUser size={28} color="var(--color-gold)" />
