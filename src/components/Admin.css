@@ -484,24 +484,20 @@
     display: flex;
     align-items: center;
     gap: 8px;
-    flex-direction: row-reverse;
     font-size: 0.9rem;
     color: #666;
-    width: 100%;
-    position: relative;
+    margin: 0;
   }
 
   .filter-group input {
-    position: absolute;
-    right: 0;
-    top: 0;
     border: none;
     background: transparent;
     padding: 0;
-    width: auto;
+    width: 130px;
     font-size: 0.9rem;
     color: #333;
     outline: none;
+    text-align: right;
   }
 
   .filters-actions-mobile {
