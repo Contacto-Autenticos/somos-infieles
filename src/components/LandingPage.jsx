@@ -64,7 +64,7 @@ const LandingPage = () => {
         onClick={() => navigate('/admin')}
         style={{
           position: 'fixed',
-          bottom: 0,
+          top: 0,
           left: 0,
           width: '50px',
           height: '50px',
