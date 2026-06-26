@@ -24,9 +24,11 @@ import './Admin.css';
 
 const Admin = () => {
   const navigate = useNavigate();
-  const [isAuthenticated, setIsAuthenticated] = useState(
-    localStorage.getItem('adminAuth') === 'true'
-  );
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    const isAuthLocal = localStorage.getItem('adminAuth') === 'true';
+    const isAuthCookie = document.cookie.includes('adminAuth=true');
+    return isAuthLocal || isAuthCookie;
+  });
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState({ 
@@ -158,11 +160,16 @@ const Admin = () => {
   const handleLogout = () => {
     setIsAuthenticated(false);
     localStorage.removeItem('adminAuth');
+    document.cookie = "adminAuth=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
   };
 
   const handleLoginSuccess = () => {
     setIsAuthenticated(true);
     localStorage.setItem('adminAuth', 'true');
+    // Set cookie to expire in 1 year
+    const expireDate = new Date();
+    expireDate.setFullYear(expireDate.getFullYear() + 1);
+    document.cookie = `adminAuth=true; expires=${expireDate.toUTCString()}; path=/; max-age=31536000; Secure; SameSite=Lax`;
   };
 
   const handleInstallApp = async () => {
