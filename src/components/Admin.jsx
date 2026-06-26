@@ -25,7 +25,7 @@ import './Admin.css';
 const Admin = () => {
   const navigate = useNavigate();
   const [isAuthenticated, setIsAuthenticated] = useState(
-    sessionStorage.getItem('adminAuth') === 'true'
+    localStorage.getItem('adminAuth') === 'true'
   );
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -157,12 +157,12 @@ const Admin = () => {
 
   const handleLogout = () => {
     setIsAuthenticated(false);
-    sessionStorage.removeItem('adminAuth');
+    localStorage.removeItem('adminAuth');
   };
 
   const handleLoginSuccess = () => {
     setIsAuthenticated(true);
-    sessionStorage.setItem('adminAuth', 'true');
+    localStorage.setItem('adminAuth', 'true');
   };
 
   const handleInstallApp = async () => {
