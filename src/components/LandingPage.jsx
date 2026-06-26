@@ -26,12 +26,25 @@ const LandingPage = () => {
     if (status && ['approved', 'failure', 'pending'].includes(status)) {
       setPaymentStatus(status);
       if (status === 'approved') {
+        let message = 'Un comprador ha finalizado exitosamente su pago en Mercado Pago.';
+        const pendingData = localStorage.getItem('pendingPurchase');
+        
+        if (pendingData) {
+          try {
+            const data = JSON.parse(pendingData);
+            message = `${data.name} ha finalizado su compra del paquete ${data.pkgTitle} por $${data.priceUSD} USD.`;
+            localStorage.removeItem('pendingPurchase');
+          } catch (e) {
+            console.error('Error parsing pending purchase data:', e);
+          }
+        }
+
         fetch('/api/notify', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            title: '¡Pago Aprobado! 💰',
-            message: 'Un comprador ha finalizado exitosamente su pago en Mercado Pago.'
+            title: '¡Pago Aprobado! 💵',
+            message: message
           })
         }).catch(err => console.error('Error enviando notificación:', err));
       }

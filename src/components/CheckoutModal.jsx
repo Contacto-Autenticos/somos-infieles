@@ -120,11 +120,18 @@ const CheckoutModal = ({ isOpen, onClose, packageType }) => {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            title: '¡Nueva Venta!',
+            title: '¡Nueva intención de compra!',
             message: `${formData.fullName} está comprando el paquete ${pkg.title} por $${pkg.priceUSD} USD.`
           })
         }).catch(err => console.error('Error enviando notificación:', err));
       }
+
+      // Guardar datos temporalmente para la notificación de éxito
+      localStorage.setItem('pendingPurchase', JSON.stringify({
+        name: formData.fullName,
+        pkgTitle: pkg.title,
+        priceUSD: pkg.priceUSD
+      }));
 
       // 5. Redirect to Mercado Pago checkout
       window.location.href = data.init_point;
