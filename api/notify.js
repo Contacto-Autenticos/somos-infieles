@@ -71,7 +71,7 @@ export default async function handler(req, res) {
           console.error('Error sending notification to an endpoint:', err);
           if (err.statusCode === 410 || err.statusCode === 404) {
             // Subscription expired or unsubscribed, remove from DB
-            return fetch(`${supabaseUrl}/rest/v1/admin_push_subscriptions?endpoint=eq.${encodeURIComponent(sub.endpoint)}`, {
+            fetch(`${supabaseUrl}/rest/v1/admin_push_subscriptions?endpoint=eq.${encodeURIComponent(sub.endpoint)}`, {
               method: 'DELETE',
               headers: {
                 'apikey': supabaseKey,
@@ -79,12 +79,14 @@ export default async function handler(req, res) {
               }
             });
           }
+          return { error: err.message || err.toString(), statusCode: err.statusCode };
         });
     });
 
-    await Promise.all(sendPromises);
+    const results = await Promise.all(sendPromises);
+    const errors = results.filter(r => r && r.error);
 
-    return res.status(200).json({ success: true, count: subscriptions.length });
+    return res.status(200).json({ success: true, count: subscriptions.length, errors });
   } catch (error) {
     console.error('Error in notify handler:', error);
     return res.status(500).json({ error: error.message });
