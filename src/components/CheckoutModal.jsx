@@ -50,6 +50,16 @@ const CheckoutModal = ({ isOpen, onClose, packageType }) => {
     setStatus('processing');
     setErrorMsg('');
 
+    // Registrar evento de Inicio de Compra en Facebook Pixel
+    if (typeof window !== 'undefined' && window.fbq) {
+      window.fbq('track', 'InitiateCheckout', {
+        value: pkg.priceUSD,
+        currency: 'USD',
+        content_name: pkg.title,
+        content_category: packageType
+      });
+    }
+
     try {
       // 1. Generate a unique reference for this order
       const reference = `SI-${Date.now()}-${Math.random().toString(36).substr(2, 6)}`;
