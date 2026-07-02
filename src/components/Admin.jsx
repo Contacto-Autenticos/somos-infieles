@@ -397,6 +397,11 @@ const Admin = () => {
                     <td className="col-monto">
                       ${order.precio_usd} USD
                       <div style={{ fontSize: '0.75rem', opacity: 0.6 }}>~ ${order.precio_cop?.toLocaleString()} COP</div>
+                      {order.precio_usd && order.precio_cop && (
+                        <div style={{ fontSize: '0.65rem', opacity: 0.5, marginTop: '2px' }}>
+                          (Tasa aplicada: 1 USD = ${Math.round(order.precio_cop / order.precio_usd).toLocaleString('es-CO')} COP)
+                        </div>
+                      )}
                     </td>
                     <td>
                       <span style={{ fontWeight: 600 }}>{getPackageLabel(order.paquete)}</span>
@@ -500,6 +505,11 @@ const Admin = () => {
                 <div className="card-price-col">
                   <span className="card-price">${order.precio_usd} USD</span>
                   <span className="card-price-cop">~ ${order.precio_cop?.toLocaleString()} COP</span>
+                  {order.precio_usd && order.precio_cop && (
+                    <span style={{ fontSize: '0.65rem', opacity: 0.5, marginTop: '2px', display: 'block' }}>
+                      (Tasa aplicada: 1 USD = ${Math.round(order.precio_cop / order.precio_usd).toLocaleString('es-CO')} COP)
+                    </span>
+                  )}
                 </div>
                 <span className="card-package">{getPackageLabel(order.paquete)}</span>
               </div>

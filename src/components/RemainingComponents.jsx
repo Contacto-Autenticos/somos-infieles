@@ -188,7 +188,7 @@ export const Footer = () => (
       <h3 style={{ marginBottom: '1rem', color: 'var(--color-dark)' }}>SOMOS INFIELES</h3>
       
       <div style={{ display: 'flex', justifyContent: 'center', gap: '1.5rem', margin: '1.5rem 0' }}>
-        <a href="https://www.instagram.com/felipebeltranhernandez/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-gold)' }}>
+        <a href="https://www.instagram.com/somosinfieleslibro/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-gold)' }}>
           <Instagram size={28} />
         </a>
         <a href="https://www.facebook.com/felipebeltranhernandez/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-gold)' }}>
